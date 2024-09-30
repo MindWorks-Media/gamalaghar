@@ -18,21 +18,21 @@
                             @csrf
                             <span class="ec-register-wrap">
                                 <label>Full Name<span class="layui-font-red">*</span></label>
-                                <input type="text" name="fullname" placeholder="Enter your full name" />
+                                <input type="text" name="fullname" placeholder="Enter your full name" value="{{old('fullname')}}"/>
                                 @error('fullname')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </span>
                             <span class="ec-register-wrap ec-register-half">
                                 <label>Email<span class="layui-font-red">*</span></label>
-                                <input type="email" name="email" placeholder="Enter your email address" />
+                                <input type="email" name="email" placeholder="Enter your email address" value="{{old('email')}}"/>
                                 @error('email')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </span>
                             <span class="ec-register-wrap ec-register-half">
                                 <label>Phone Number<span class="layui-font-red">*</span></label>
-                                <input type="text" name="phone" placeholder="Enter your phone number" />
+                                <input type="text" name="phone" placeholder="Enter your phone number" value="{{old('phone')}}"/>
                                 @error('phone')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
