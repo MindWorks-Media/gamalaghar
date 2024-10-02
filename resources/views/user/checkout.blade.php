@@ -18,7 +18,7 @@
                                         <div class="ec-check-bill-form">
                                             <div class="row">
                                                 <div class="col-lg-6">
-                                                    <label>Full Name*</label>
+                                                    <label>Full Name<span class="layui-font-red">*</span></label>
                                                     <input type="text" name="fullname"
                                                         value="{{ $userDetails->name ?? null }}" />
                                                     @error('fullname')
@@ -26,9 +26,9 @@
                                                     @enderror
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <label>Address</label>
+                                                    <label>Address<span class="layui-font-red">*</span></label>
                                                     <input type="text" name="address" placeholder="Address Line 1"
-                                                        value="{{ $userDetails->address ?? null }}" />
+                                                        value="{{ $userDetails->address ?? old('address') }}" />
                                                     @error('address')
                                                         <p class="text-danger">{{ $message }}</p>
                                                     @enderror
@@ -36,13 +36,14 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-6">
-                                                    <label>Province *</label>
+                                                    <label>Province<span class="layui-font-red">*</span></label>
                                                     <span class="ec-bl-select-inner">
                                                         <select class="select2" name="province_id" id="provinceOption">
                                                             <option value=""></option>
                                                             @foreach ($provinces as $province)
                                                                 <option value="{{ $province->id }}">
-                                                                    {{ $province->province }}</option>
+                                                                    {{ $province->province }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
                                                         @error('province_id')
@@ -51,7 +52,7 @@
                                                     </span>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <label>City *</label>
+                                                    <label>City<span class="layui-font-red">*</span></label>
                                                     <span class="ec-bl-select-inner">
                                                         <select class="select2" name="city_id" id="cityOption">
                                                             <option value=""></option>
@@ -64,7 +65,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-6">
-                                                    <label>Area</label>
+                                                    <label>Area<span class="layui-font-red">*</span></label>
                                                     <span class="ec-bl-select-inner">
                                                         <select class="select2" name="area_id" id="areaOption">
                                                             <option value=""></option>
@@ -186,7 +187,7 @@
                                             @forelse ($paymentOptions as $paymentOption)
                                                 <span>
                                                     <input type="radio" id="pay1" name="payment_option"
-                                                        class="form-check-input" value="{{ $paymentOption->id }}">
+                                                        class="form-check-input" checked value="{{ $paymentOption->id }}">
                                                     <label for="pay1">{{ $paymentOption->payment_name }}</label>
                                                 </span>
                                                 @error('payment_option')
