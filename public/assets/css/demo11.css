@@ -12,55 +12,55 @@
   Fonts Family & Style CSS
 ---------------------------------------------------*/
 @font-face {
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins";
     src: url("./../fonts/poppins/Poppins-Thin.ttf") format("truetype");
     font-weight: 100;
     font-style: normal;
 }
 @font-face {
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins";
     src: url("./../fonts/poppins/Poppins-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-style: normal;
 }
 @font-face {
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins";
     src: url("./../fonts/poppins/Poppins-Light.ttf");
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins";
     src: url("./../fonts/poppins/Poppins-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins";
     src: url("./../fonts/poppins/Poppins-Medium.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins";
     src: url("./../fonts/poppins/Poppins-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins";
     src: url("./../fonts/poppins/Poppins-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
 }
 @font-face {
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins";
     src: url("./../fonts/poppins/Poppins-ExtraBold.ttf") format("truetype");
     font-weight: 800;
     font-style: normal;
 }
 @font-face {
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins";
     src: url("./../fonts/poppins/Poppins-Black.ttf") format("truetype");
     font-weight: 900;
     font-style: normal;
@@ -695,7 +695,7 @@ progress {
 body {
     margin: 0 auto;
     background-color: #ffffff;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 14px;
     font-weight: 400;
     font-style: normal;
@@ -5782,7 +5782,7 @@ textarea.form-control.is-invalid {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -5937,7 +5937,7 @@ textarea.form-control.is-invalid {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -14797,7 +14797,7 @@ li {
 .header-top-message {
     font-size: 14px;
     color: #887f7f;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
     text-align: left;
 }
 .header-top-message span {
@@ -15130,7 +15130,7 @@ li {
     color: #444444;
     display: block;
     position: relative;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
 }
 .ec-main-menu ul li .main-label-note-new {
     -webkit-transition: all 0.3s ease-in-out;
@@ -15526,7 +15526,7 @@ li {
     background-color: #692c91;
     color: white;
     font-size: 16px;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
     border-radius: 5px;
 }
 .header-top-cat .ec-shop-by-cat .shop-cat {
@@ -15751,7 +15751,7 @@ body.ec-open:before {
 .ec-side-cart .ec-menu-title .menu_title {
     font-size: 18px;
     color: #ff909d;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
     font-weight: 600;
 }
 .ec-side-cart .ec-menu-title .ec-close {
@@ -17154,7 +17154,7 @@ body.ec-open:before {
     line-height: 1.5;
     letter-spacing: 0.5px;
     font-weight: 400;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
     text-transform: capitalize;
 }
 .category-sidebar
@@ -18956,7 +18956,7 @@ section.ec-instagram-section {
     color: #212121;
     font-size: 70px;
     font-weight: 700;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
     position: relative;
     text-transform: uppercase;
 }
@@ -18971,7 +18971,7 @@ section.ec-instagram-section {
 .ec-slide-content .ec-slide-stitle {
     font-size: 30px;
     color: #692c91;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
     line-height: 60px;
     position: relative;
     font-weight: 700;
@@ -19593,7 +19593,7 @@ section.ec-instagram-section {
     line-height: 1.5;
     letter-spacing: 0.5px;
     font-weight: 400;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
     text-transform: capitalize;
 }
 .ec-product-tab
@@ -20615,7 +20615,7 @@ i.ecicon.eci-star.fill {
     font-size: 30px;
     font-weight: 700;
     line-height: 1;
-    font-family: "Poppins, sans-serif";
+    font-family: "Poppins", Arial, sans-serif;
 }
 .ec-achievement-sec .main-card img {
     width: 70px;
