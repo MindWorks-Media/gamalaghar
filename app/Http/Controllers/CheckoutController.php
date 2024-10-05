@@ -48,7 +48,7 @@ class CheckoutController extends Controller
             $productId = $cart->pluck('id')->toArray();
             $cartproductImages = Product::with('media')->whereIn('id', $productId)->get();
             $userDetails = User::leftjoin('user_details', 'user_details.user_id', '=', 'users.id')
-            ->select('users.id', 'users.name', 'user_details.address')
+            ->select('users.id', 'users.name', 'users.email', 'users.phone', 'user_details.address')
             ->where('users.id', auth()->user()->id)
             ->first();
         } else {
