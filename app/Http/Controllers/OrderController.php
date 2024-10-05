@@ -22,33 +22,40 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'payment_option'=>['required'],
-            'fullname'=>['required'],
-            'address'=>['required']
+            'payment_option' => ['required'],
+            'fullname' => ['required'],
+            'shipping_address' => ['required'],
+            'province_id' => ['required'],
+            'city_id' => ['required'],
         ]);
+
         try {
             $city = $request->input('city_id');
             $area = $request->input('area_id');
             // Retrieve province, city, and area names from their respective models
             $provinceName = Province::find($request->province_id);
             $cityName = City::find($city)->city;
-            $areaName="";
-            if($area){
+            $areaName = "";
+            if ($area) {
                 $areaName = Area::find($area)->area;
             }
-            $order = DB::transaction(function () use ($request, $provinceName, $cityName, $areaName) {
+            $user = Auth::user();
+            $order = DB::transaction(function () use ($request, $provinceName, $cityName, $areaName, $user) {
                 $order = Order::create([
-                    'user_id' => auth()->user()->id,
+                    'user_id' => $user->id,
                     'order_number' => Str::upper(Carbon::now()->format('Yd') . Str::random(5)),
                     'fullname' => $request->fullname,
+                    'shipping_email' => $request->shipping_email !== $user->email ? $request->shipping_email : null,
+                    'shipping_phone' => $request->shipping_phone !== $user->phone ? $request->shipping_phone : null,
                     'province' => $provinceName->province,
-                    'city' => $cityName??null,
-                    'area' => $areaName??null,
+                    'city' => $cityName ?? null,
+                    'area' => $areaName ?? null,
+                    'shipping_address' => $request->shipping_address,
                     'sub_total' => $request->sub_total,
                     'delivery_charge' => $request->delivery_charge,
                     'total_amount' => $request->total_amount,
-                    'payment_option_id'=>$request->payment_option,
-                    'comment'=>$request->comment,
+                    'payment_option_id' => $request->payment_option,
+                    'comment' => $request->comment,
                     'order_status' => 'Pending',
                 ]);
                 $size = $request->input('size');
@@ -77,28 +84,27 @@ class OrderController extends Controller
                     ->whereIn('product_id', $orderedProductIds)
                     ->delete();
 
-                    $user = User::find(auth()->user()->id);
+                $user = User::find(auth()->user()->id);
 
-                    // Prepare products and total price data for the email
-                    $products = [];
-                    $totalPrice = 0;
-                    for ($i = 0; $i < count($size); $i++) {
-                        $products[] = [
-                            'name' => $product_name[$i],
-                            'quantity' => $quantity[$i],
-                            'price' => $price[$i]
-                        ];
-                        $totalPrice += $price[$i] * $quantity[$i];
-                    }
+                // Prepare products and total price data for the email
+                $products = [];
+                $totalPrice = 0;
+                for ($i = 0; $i < count($size); $i++) {
+                    $products[] = [
+                        'name' => $product_name[$i],
+                        'quantity' => $quantity[$i],
+                        'price' => $price[$i]
+                    ];
+                    $totalPrice += $price[$i] * $quantity[$i];
+                }
 
-                    // Send the email with order, products, and total price
-                    Mail::to($user->email)->send(new OrderConfirmationMail($user, $order, $products, $totalPrice));
+                // Send the email with order, products, and total price
+                Mail::to($user->email)->send(new OrderConfirmationMail($user, $order, $products, $totalPrice));
                 return $order;
             });
             if ($order) {
                 return redirect('/')->with('success', 'Your Order is Placed!!');
-            }
-            else{
+            } else {
                 return back()->with('error', 'Please Fill the Province, City and Area');
             }
         } catch (\Exception $e) {

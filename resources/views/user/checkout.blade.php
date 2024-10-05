@@ -11,13 +11,13 @@
                     <!-- Checkout content Start -->
                     <div class="ec-checkout-content">
                         <div class="ec-checkout-inner">
-                            <div class="ec-checkout-wrap margin-bottom-30 padding-bottom-3">
+                            <div class="ec-checkout-wrap padding-bottom-3">
                                 <div class="ec-checkout-block ec-check-bill">
-                                    <h3 class="ec-checkout-title">Billing Details</h3><br>
+                                    <h3 class="text-xl fw-bold">Billing Details</h3><br>
                                     <div class="ec-bl-block-content">
                                         <div class="ec-check-bill-form">
                                             <div class="row">
-                                                <div class="col-lg-6">
+                                                <div class="col-md-6">
                                                     <label>Full Name<span class="layui-font-red">*</span></label>
                                                     <input type="text" name="fullname"
                                                         value="{{ $userDetails->name ?? null }}" />
@@ -25,19 +25,29 @@
                                                         <p class="text-danger">{{ $message }}</p>
                                                     @enderror
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <label>Address<span class="layui-font-red">*</span></label>
-                                                    <input type="text" name="address" placeholder="Address Line 1"
-                                                        value="{{ $userDetails->address ?? old('address') }}" />
-                                                    @error('address')
+                                                <div class="col-md-6">
+                                                    <label>Email<span class="layui-font-red">*</span></label>
+                                                    <input type="email" name="shipping_email"
+                                                        placeholder="Email Address"
+                                                        value="{{ $userDetails->email ?? old('shipping_email') }}" />
+                                                    @error('shipping_email')
                                                         <p class="text-danger">{{ $message }}</p>
                                                     @enderror
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-6">
+                                                <div class="col-md-6">
+                                                    <label>Phone Number<span class="layui-font-red">*</span></label>
+                                                    <input type="text" name="shipping_phone"
+                                                        placeholder="Phone Number"
+                                                        value="{{ $userDetails->phone ?? old('shipping_phone') }}" />
+                                                    @error('shipping_phone')
+                                                        <p class="text-danger">{{ $message }}</p>
+                                                    @enderror
+                                                </div>
+
+
+                                                <div class="col-md-6 mb-5">
                                                     <label>Province<span class="layui-font-red">*</span></label>
-                                                    <span class="ec-bl-select-inner">
+                                                    <span class="ec-bl-select-inner mb-0">
                                                         <select class="select2" name="province_id" id="provinceOption">
                                                             <option value=""></option>
                                                             @foreach ($provinces as $province)
@@ -46,40 +56,86 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
-                                                        @error('province_id')
-                                                            <p class="text-danger">{{ $message }}</p>
-                                                        @enderror
                                                     </span>
+                                                    @error('province_id')
+                                                        <p class="text-danger mt-2">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-md-6 mb-5">
                                                     <label>City<span class="layui-font-red">*</span></label>
-                                                    <span class="ec-bl-select-inner">
+                                                    <span class="ec-bl-select-inner mb-0">
                                                         <select class="select2" name="city_id" id="cityOption">
                                                             <option value=""></option>
                                                         </select>
-                                                        @error('city_id')
-                                                            <p class="text-danger">{{ $message }}</p>
-                                                        @enderror
                                                     </span>
+                                                    @error('city_id')
+                                                        <p class="text-danger mt-2">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-6">
+                                                <div class="col-md-6 mb-5">
                                                     <label>Area<span class="layui-font-red">*</span></label>
-                                                    <span class="ec-bl-select-inner">
+                                                    <span class="ec-bl-select-inner mb-0">
                                                         <select class="select2" name="area_id" id="areaOption">
                                                             <option value=""></option>
                                                         </select>
                                                         @error('area_id')
-                                                            <p class="text-danger">{{ $message }}</p>
+                                                            <p class="text-danger mt-2">{{ $message }}</p>
                                                         @enderror
                                                     </span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Address Line<span class="layui-font-red">*</span></label>
+                                                    <input type="text" name="shipping_address"
+                                                        placeholder="Address Line"
+                                                        value="{{ $userDetails->address ?? old('shipping_address') }}" />
+                                                    @error('shipping_address')
+                                                        <p class="text-danger">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <h3 class="text-xl fw-bold">Payment Method</h3>
+                            <hr>
+                            <div class="ec-sidebar-wrap ec-checkout-pay-wrap border-0 p-0">
+                                <!-- Sidebar Payment Block -->
+                                <div class="ec-sidebar-block p-0">
+                                    <div class="ec-sb-block-content border-0">
+                                        <div class="ec-checkout-pay">
+                                            <div class="ec-pay-desc">Please select the preferred payment method to use
+                                                on this
+                                                order.
+                                            </div>
+                                            {{-- <form action="#"> --}}
+                                                <span class="ec-pay-option">
+                                                    @forelse ($paymentOptions as $paymentOption)
+                                                        <span>
+                                                            <input type="radio" id="pay1" name="payment_option"
+                                                                class="form-check-input" checked
+                                                                value="{{ $paymentOption->id }}">
+                                                            <label
+                                                                for="pay1">{{ $paymentOption->payment_name }}</label>
+                                                        </span>
+                                                        @error('payment_option')
+                                                            <p class="text-danger">{{ $message }}</p>
+                                                        @enderror
+                                                    @empty
+                                                    @endforelse
+                                                </span>
+                                                <div class="ec-pay-commemt">
+                                                    <span class="ec-pay-opt-head">Add Comments About Your Order</span>
+                                                    <textarea style="height: unset;" rows="2" name="comment" placeholder="Comments"></textarea>
+                                                </div>
+                                            {{-- </form> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sidebar Payment Block -->
+                            </div>
+
                             <div class="ec-check-order-btn">
                                 <input type="hidden" id="subTotal" name="sub_total" value="{{ $sub_total }}">
                                 <input type="hidden" id="delivery_Charge" name="delivery_charge" value="100">
@@ -172,7 +228,7 @@
                         </div>
                         <!-- Sidebar Summary Block -->
                     </div>
-                    <div class="ec-sidebar-wrap ec-checkout-pay-wrap">
+                    {{-- <div class="ec-sidebar-wrap ec-checkout-pay-wrap">
                         <!-- Sidebar Payment Block -->
                         <div class="ec-sidebar-block">
                             <div class="ec-sb-title">
@@ -181,13 +237,15 @@
                             <div class="ec-sb-block-content">
                                 <div class="ec-checkout-pay">
                                     <div class="ec-pay-desc">Please select the preferred payment method to use on this
-                                        order.</div>
+                                        order.
+                                    </div>
                                     <form action="#">
                                         <span class="ec-pay-option">
                                             @forelse ($paymentOptions as $paymentOption)
                                                 <span>
                                                     <input type="radio" id="pay1" name="payment_option"
-                                                        class="form-check-input" checked value="{{ $paymentOption->id }}">
+                                                        class="form-check-input" checked
+                                                        value="{{ $paymentOption->id }}">
                                                     <label for="pay1">{{ $paymentOption->payment_name }}</label>
                                                 </span>
                                                 @error('payment_option')
@@ -205,7 +263,7 @@
                             </div>
                         </div>
                         <!-- Sidebar Payment Block -->
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </form>
