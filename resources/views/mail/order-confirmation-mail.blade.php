@@ -38,6 +38,7 @@
 
         .order-details {
             margin-bottom: 20px;
+            margin-top: 20px;
         }
 
         .order-details th,
@@ -69,10 +70,12 @@
 
         <p>Dear {{ $user->name }},</p>
 
-        <p>Your order has been confirmed. We are pleased to inform you that your order will be delivered within 3 days.</p>
-
+        <p>
+            Your order has been confirmed. We are pleased to inform you that your order will be delivered within 3 days.
+        </p>
         <div class="order-details">
             <h2>Order Details</h2>
+            <hr>
             <p><strong>Order Number:</strong> {{ $orderNumber }}</p>
             <table width="100%" cellspacing="0" cellpadding="0">
                 <thead>
@@ -83,16 +86,47 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($products as $product)
-                    <tr>
-                        <td>{{ $product['name'] }}</td>
-                        <td>{{ $product['quantity'] }}</td>
-                        <td>NPR {{ $product['price'] }}</td>
-                    </tr>
+                    @foreach ($products as $product)
+                        <tr>
+                            <td>{{ $product['name'] }}</td>
+                            <td>{{ $product['quantity'] }}</td>
+                            <td>NPR {{ $product['price'] }}</td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
             <p><strong>Total Price:</strong> NPR {{ $totalPrice }}</p>
+        </div>
+        <div class="order-details">
+            <h2>Shipping Details</h2>
+            <hr>
+            <table width="100%" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td>Name: </td>
+                        <td>{{ $order->fullname }}</td>
+                    </tr>
+                    <tr>
+                        <td>Address: </td>
+                        <td>{{ $order->province . ', ' . $order->city . ', ' . $order->area ?? $order->area }} {{ $order->shipping_address ?? ", " .$order->shipping_address }}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone: </td>
+                        <td>{{ $order->shipping_phone ? $order->shipping_phone : $user->phone }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email: </td>
+                        <td>{{ $order->shipping_email ? $order->shipping_email : $user->email }}</td>
+                    </tr>
+
+                    @if ($order->comment)
+                        <tr>
+                            <td>Comment: </td>
+                            <td>{{ $order->comment }}</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
         </div>
 
         <footer>
