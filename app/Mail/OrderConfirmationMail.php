@@ -46,6 +46,7 @@ class OrderConfirmationMail extends Mailable
     {
         return $this->markdown('mail.order-confirmation-mail')->with([
             'user' => $this->user,
+            'order' => $this->order,
             'orderNumber' => $this->order->order_number,
             'products' => $this->products,  // Array of products with name, quantity, and price
             'totalPrice' => $this->totalPrice
