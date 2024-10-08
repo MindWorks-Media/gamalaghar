@@ -86,7 +86,9 @@ class ProductController extends Controller
                   ->from('product_size_prices')
                   ->where('product_id', $product->id)
                   ->where('product_stock', '>', 0);
-        })->get();
+        })
+        ->orderByRaw("FIELD(slug, 'small', 'medium', 'large')")
+        ->get();
         $lastSizeId = $size->last()->id;
         $bestSellingProducts = Product::with('media', 'productImages')->with('productsizeprice')->take(6)->get();
         $relatedProducts = Product::with('media', 'productImages')->with('productsizeprice')->take(4)->get();
