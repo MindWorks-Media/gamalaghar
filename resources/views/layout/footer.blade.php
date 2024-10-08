@@ -87,16 +87,16 @@
     <div class="cc-panel">
         <div class="cc-header">
             <img src="{{ url('assets/img/Logo.png') }}" alt="profile image" />
-            <h2>John Mark</h2>
-            <p>Technical Manager</p>
+            <h2><a href="tel:+9779801890046" style="color: #692c91 !important;">+977 9801890046</a></h2>
+            <p>Customer Support</p>
         </div>
         <div class="cc-body">
             <p><b>Hey there &#128515;</b></p>
-            <p>Need help? Just give me a call.</p>
+            <p>Need help? Just give us a call.</p>
         </div>
         <div class="cc-footer">
-            <a href="tel:+9779813371345" class="cc-call-button">
-                <span>Call me</span>
+            <a href="tel:+9779801890046" class="cc-call-button">
+                <span>Call us</span>
             </a>
         </div>
     </div>
