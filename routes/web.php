@@ -52,7 +52,7 @@ Route::get('product/{slug}', [ProductController::class, 'showSingleProduct']);
 
 Route::get('/get-price', [ProductController::class, 'getPrice'])->name('get.price');
 
-Route::get('profile', [AccountController::class, 'index']);
+Route::get('profile', [AccountController::class, 'index'])->name('user.profile');
 Route::post('profile', [AccountController::class, 'edituserdetails']);
 
 Route::get('wishlist', [WishlistController::class, 'index']);
