@@ -140,8 +140,10 @@
                                     <button class="dropdown-toggle button" data-bs-toggle="dropdown"><span>My
                                             Account</span><i class="fi fi-rr-angle-small-down"></i></button>
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a class="dropdown-item" href="{{ url('profile') }}">My Account</a>
-                                        </li>
+                                        <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a></li>
+                                        <li><a class="dropdown-item" href="{{ url('user/history') }}">Order History</a></li>
+                                        <li><a class="dropdown-item" href="{{ url('wishlist') }}">Wishlist</a></li>
+                                        <li><a class="dropdown-item" href="{{ url('cart') }}">Cart</a></li>
                                         <li>
                                             <form action="{{ url('logout') }}" method="POST">
                                                 @csrf
