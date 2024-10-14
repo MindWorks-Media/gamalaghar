@@ -23,7 +23,7 @@ class WishlistController extends Controller
         $wishLists = Wishlist::join('products', 'products.id', '=', 'wishlists.product_id')
             ->join('product_size_prices', 'products.id', '=', 'product_size_prices.product_id')
             ->select('wishlists.id as wishlistid','products.id', 'products.product_name', 'products.description', 'products.slug', 'products.discount',  DB::raw('MAX(product_size_prices.price) as price'))
-            ->groupBy('wishlistid','products.id', 'products.product_name', 'products.description', 'products.slug')
+            ->groupBy('wishlistid','products.id', 'products.product_name', 'products.description', 'products.slug', 'products.discount')
             ->where('wishlists.user_id', auth()->user()->id)
             ->get();
 
