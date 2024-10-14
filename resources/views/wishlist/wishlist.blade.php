@@ -40,7 +40,9 @@
                                                                 @endif
                                                             @endforeach
                                                         </div>
-                                                        <span class="percentage">20%</span>
+                                                        @if ($wishList->discount > 0)                                                            
+                                                            <span class="percentage">20%</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="ec-pro-content">
