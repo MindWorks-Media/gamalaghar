@@ -93,7 +93,8 @@ class OrderController extends Controller
                     $products[] = [
                         'name' => $product_name[$i],
                         'quantity' => $quantity[$i],
-                        'price' => $price[$i]
+                        'price' => $price[$i],
+                        'size' => $size[$i]
                     ];
                     $totalPrice += $price[$i] * $quantity[$i];
                 }

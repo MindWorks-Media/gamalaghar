@@ -82,6 +82,7 @@
                     <tr>
                         <th>Product</th>
                         <th>Quantity</th>
+                        <th>Size</th>
                         <th>Price</th>
                     </tr>
                 </thead>
@@ -90,6 +91,7 @@
                         <tr>
                             <td>{{ $product['name'] }}</td>
                             <td>{{ $product['quantity'] }}</td>
+                            <td>{{ $product['size'] }}</td>
                             <td>NPR {{ $product['price'] }}</td>
                         </tr>
                     @endforeach
