@@ -53,6 +53,7 @@ class HomeController extends Controller
             $cartproductImages = [];
             $mainCategory = MainCategory::with('subcategories')->get();
         }
+        $feauturedProducts = Product::with(['media', 'productsizeprice','productImages'])->where('is_featured', 1)->take(8)->get();
         $faqs = Faq::all();
         return view('home.home', compact(
             'mainCategory',
@@ -63,7 +64,8 @@ class HomeController extends Controller
             'countCarts',
             'faqs',
             'userReviews',
-            'averageRatingValues'
+            'averageRatingValues',
+            'feauturedProducts'
         ));
     }
 }
