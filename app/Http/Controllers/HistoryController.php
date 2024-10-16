@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class HistoryController extends Controller
 {
     public function index()
-{
+    {
     $mainCategory = MainCategory::with('subcategories')->get();
     $product = Product::with('media')->latest()->get();
 
@@ -58,7 +58,7 @@ class HistoryController extends Controller
         'order_histories',
         'orderproductImages'
     ));
-}
+    }
 
-
+    
 }

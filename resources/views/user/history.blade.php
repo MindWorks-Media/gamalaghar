@@ -83,7 +83,7 @@
                                                 <td><span>{{ $order_history->size }}</span></td>
                                                 <td><span>Rs. {{ $order_history->quantity * $order_history->price }}</span></td>
                                                 <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
-                                                            href="#">View</a></span></td>
+                                                            href="{{route('history.order-details', ['id' => $order_id])}}">View</a></span></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

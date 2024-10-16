@@ -6,10 +6,13 @@ use App\Mail\OrderConfirmationMail;
 use App\Models\Area;
 use App\Models\Cart;
 use App\Models\City;
+use App\Models\MainCategory;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use App\Models\Province;
 use App\Models\User;
+use App\Models\Wishlist;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -111,5 +114,36 @@ class OrderController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
+    }
+
+    public function singleorder($id)
+    {
+        $mainCategory = MainCategory::with('subcategories')->get();
+        if (auth()->check()) {
+            $countWishList = Wishlist::where('user_id', auth()->user()->id)->count();
+            $countCarts = Cart::where('user_id', auth()->user()->id)->count();
+            $cart = Cart::join('products', 'products.id', '=', 'carts.product_id')
+                ->join('product_size_prices', 'product_size_prices.id', '=', 'carts.product_size_price_id')
+                ->join('sizes', 'sizes.id', '=', 'product_size_prices.size_id')
+                ->select('products.id', 'products.product_name', 'products.slug', 'product_size_prices.price', 'sizes.size', 'carts.quantity', 'carts.id as cartid', 'carts.user_id')
+                ->groupBy('cartid', 'products.id', 'products.product_name', 'products.slug', 'product_size_prices.price', 'sizes.size', 'carts.quantity', 'carts.user_id')
+                ->where('carts.user_id', auth()->user()->id)->get();
+            $productId = $cart->pluck('id')->toArray();
+            $cartproductImages = Product::with('media')->whereIn('id', $productId)->get();
+            $userDetails = User::leftjoin('user_details', 'user_details.user_id', '=', 'users.id')
+            ->select('users.id', 'users.name', 'users.email', 'users.phone', 'user_details.address')
+            ->where('users.id', auth()->user()->id)
+            ->first();
+        } else {
+            $countWishList = "";
+            $countCarts = "";
+            $cart = [];
+            $cartproductImages = [];
+            $userDetails=[];
+        }
+        $order = Order::with('orderItems')->where('id', $id)->first();
+        $productId = $order->orderItems->pluck('product_id')->toArray();
+        $productImages = Product::with('media')->whereIn('id', $productId)->get();
+        return view('user.order_details', compact('order', 'productImages', 'countWishList', 'countCarts', 'cart', 'cartproductImages', 'userDetails', 'mainCategory'));
     }
 }
