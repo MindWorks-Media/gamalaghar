@@ -76,6 +76,7 @@ Route::post('user/order', [OrderController::class, 'store']);
 
 
 Route::get('user/history', [HistoryController::class, 'index']);
+Route::get('user/history/order-details/{id}', [OrderController::class, 'singleorder'])->name('history.order-details');
 
 Route::get('privacy-policy', [PrivacyPolicyController::class, 'index']);
 Route::get('terms-condition', [TermsAndConditionController::class, 'index']);
