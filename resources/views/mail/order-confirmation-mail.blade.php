@@ -97,7 +97,11 @@
                     @endforeach
                 </tbody>
             </table>
-            <p><strong>Total Price:</strong> NPR {{ $totalPrice }}</p>
+            <div style="padding-top: 10px; padding-bottom: 10px;">
+                <p style="margin-bottom: 0;"><em>Sub Total: NPR {{ $subTotal }}</em></p>
+                <p style="margin-bottom: 0;"><em>Delivery Fee: NPR {{ $deliveryCharge }}</em></p>
+                <p style="margin-bottom: 0;"><strong>Total Price:</strong> NPR {{ $totalPrice }}</p>
+            </div>
         </div>
         <div class="order-details">
             <h2>Shipping Details</h2>

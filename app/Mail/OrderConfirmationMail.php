@@ -16,17 +16,21 @@ class OrderConfirmationMail extends Mailable
     public $user;
     public $order;
     public $products;
-    public $totalPrice;
+    public $subTotalPrice;
+    public $netTotalAmount;
+    public $deliveryCharge;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($user, $order, $products, $totalPrice)
+    public function __construct($user, $order, $products, $subTotalPrice, $deliveryCharge, $netTotalAmount)
     {
         $this->user = $user;
         $this->order = $order;
         $this->products = $products;
-        $this->totalPrice = $totalPrice;
+        $this->subTotalPrice = $subTotalPrice;
+        $this->deliveryCharge = $deliveryCharge;
+        $this->netTotalAmount = $netTotalAmount;
     }
 
     /**
@@ -49,7 +53,9 @@ class OrderConfirmationMail extends Mailable
             'order' => $this->order,
             'orderNumber' => $this->order->order_number,
             'products' => $this->products,  // Array of products with name, quantity, and price
-            'totalPrice' => $this->totalPrice
+            'subTotal' => $this->subTotalPrice,
+            'deliveryCharge' => $this->deliveryCharge,
+            'totalPrice' => $this->netTotalAmount,
         ]);
     }
 
