@@ -138,8 +138,8 @@
 
                             <div class="ec-check-order-btn">
                                 <input type="hidden" id="subTotal" name="sub_total" value="{{ $sub_total }}">
-                                <input type="hidden" id="delivery_Charge" name="delivery_charge" value="100">
-                                <input type="hidden" name="total_amount" value="{{ $sub_total + 100 }}">
+                                <input type="hidden" id="deliveryCharge" name="delivery_charge" value="100">
+                                <input type="hidden" id="totalAmount" name="total_amount" value="{{ $sub_total + 100 }}">
                                 <button type="submit" class="btn btn-primary">Place Order</button>
                             </div>
                         </div>
@@ -349,6 +349,7 @@
 
                         // Update the total amount in the UI
                         $('#total_Amount').text('Rs. ' + totalAmount);
+                        $('#totalAmount').val(totalAmount);
                     }
                 });
             } else {

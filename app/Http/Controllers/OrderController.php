@@ -66,6 +66,9 @@ class OrderController extends Controller
                 $product_name = $request->input('product_name');
                 $product_id = $request->input('product_id');
                 $quantity = $request->input('quantity');
+                $subTotalAmount = $request->input('sub_total');
+                $deliveryCharge = $request->input('delivery_charge');
+                $netTotalAmount = $request->input('total_amount');
                 // Loop through the arrays and save each product
                 for (
                     $i = 0;
@@ -91,7 +94,7 @@ class OrderController extends Controller
 
                 // Prepare products and total price data for the email
                 $products = [];
-                $totalPrice = 0;
+                $subTotalPrice = 0;
                 for ($i = 0; $i < count($size); $i++) {
                     $products[] = [
                         'name' => $product_name[$i],
@@ -99,11 +102,13 @@ class OrderController extends Controller
                         'price' => $price[$i],
                         'size' => $size[$i]
                     ];
-                    $totalPrice += $price[$i] * $quantity[$i];
+                    $subTotalPrice += $price[$i] * $quantity[$i];
+                    // $deliveryAmount = $deliveryCharge;
+                    // $totalPrice = $netTotalAmount;
                 }
 
                 // Send the email with order, products, and total price
-                Mail::to($user->email)->send(new OrderConfirmationMail($user, $order, $products, $totalPrice));
+                Mail::to($user->email)->send(new OrderConfirmationMail($user, $order, $products, $subTotalPrice, $deliveryCharge, $netTotalAmount));
                 return $order;
             });
             if ($order) {
