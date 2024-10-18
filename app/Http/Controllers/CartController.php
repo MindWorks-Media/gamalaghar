@@ -35,6 +35,7 @@ class CartController extends Controller
             $cart = [];
             $cartproductImages = [];
         }
+        // dd($cart);
         return view('user.user_cart', compact('mainCategory', 'countWishList', 'countCarts', 'cart', 'cartproductImages', 'relatedProducts'));
     }
 

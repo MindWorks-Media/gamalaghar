@@ -39,7 +39,8 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th>Product</th>
+                                                <th>Product Image</th>
+                                                <th>Product Name</th>
                                                 <th>Price</th>
                                                 <th style="text-align: center;">Quantity</th>
                                                 <th>Size</th>
@@ -55,7 +56,7 @@
                                                     </td>
                                                     @foreach ($cartproductImages as $cartproductImage)
                                                         @if ($cartproductImage->id == $cartData->id)
-                                                            <td data-label="Product" class="ec-cart-pro-name">
+                                                            <td data-label="Product" class="">
                                                                 <a>
                                                                     @if ($cartproductImage->productImages->isNotEmpty())
                                                                         @php
@@ -78,6 +79,9 @@
                                                             </td>
                                                         @endif
                                                     @endforeach
+                                                    <td class="size">
+                                                        <span class="amount">{{ $cartData->product_name }}</span>
+                                                    </td>
                                                     <td data-label="Price" class="ec-cart-pro-price"><span
                                                             class="amount">Rs. {{ $cartData->price }}</span>
                                                     </td>
