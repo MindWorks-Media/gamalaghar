@@ -89,7 +89,10 @@ class ProductController extends Controller
         })
         ->orderByRaw("FIELD(slug, 'small', 'medium', 'large')")
         ->get();
-        $lastSizeId = $size->last()->id;
+        // $lastSizeId = $size->where('slug', 'small')->id;
+        $lastSizeId = $size->where('slug', 'small')->first()->id ?? $size->first()->id;
+        $activeSizePrice = $product->productsizeprice->where('size_id', $size->first()->id)->first()->price;
+
         $bestSellingProducts = Product::with('media', 'productImages')->with('productsizeprice')->take(6)->get();
         $relatedProducts = Product::with('media', 'productImages')->with('productsizeprice')->take(4)->get();
         $productID=Product::where('slug',$slug)->first();
@@ -133,7 +136,8 @@ class ProductController extends Controller
             'countCarts',
             'existingWishlistItem',
             'userReviews',
-            'averageRatingValue'
+            'averageRatingValue',
+            'activeSizePrice'
         ));
     }
 

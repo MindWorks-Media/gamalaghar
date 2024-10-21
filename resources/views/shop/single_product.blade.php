@@ -73,7 +73,9 @@
                                     <div class="ec-single-price">
                                         <span class="ec-single-ps-title">As low as</span>
                                         <span class="new-price" id="product-new-price">Rs.
-                                            {{ $product->productsizeprice->first()->price }}</span>
+                                            {{-- {{ $product->productsizeprice->first()->price }} --}}
+                                            {{ $activeSizePrice }}
+                                        </span>
                                     </div>
                                     <div class="ec-single-stoke">
                                         <span id="product-stock-status" class="ec-single-ps-title">STOCK
@@ -82,6 +84,7 @@
                                             id="product-stock-value">{{ $product->productsizeprice->first()->product_stock }}</span>
                                     </div>
                                 </div>
+                                {{-- @dd($activeSizePrice, $lastSizeId) --}}
                                 <div class="ec-pro-variation">
                                     <div class="ec-pro-variation-inner ec-pro-variation-size">
                                         <span>SIZE</span>
