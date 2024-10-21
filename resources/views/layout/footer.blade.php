@@ -239,7 +239,7 @@
 <script>
     $(document).ready(function() {
         // Automatically highlight the last option
-        var $lastOption = $('.ec-pro-variation-content .size-option').last();
+        var $lastOption = $('.ec-pro-variation-content .size-option').first();
         $lastOption.addClass('active');
 
         $('.ec-pro-variation-content').on('click', 'li.size-option', function(e) {
