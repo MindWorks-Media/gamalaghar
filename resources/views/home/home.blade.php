@@ -1,3 +1,17 @@
+@section('metadata')
+    <x-meta title="Gamala Ghar"
+    description="Gamala Ghar is an innovative ecommerce platform dedicated to providing a wide range of
+                            indoor plants to enhance the ambiance and freshness of homes. With a focus on promoting
+                            well-being and creating healthier living spaces, Gamala Ghar offers a curated selection
+                            of indoor plants that are not only visually appealing but also contribute to improving
+                            indoor air quality and overall mood."
+    image="{{ url('assets/img/gamala-ghar-logo.png') }}" />
+    <meta name="title" property="og:title" content="Gamalaghar">
+    <meta name="description" property="og:description" content="Gamalaghar">
+    <meta name="keywords" content="Gamalaghar">
+    <meta name="author" content="Gamalaghar Ecommerce">   
+@endsection
+
 @include('layout.header')
 @livewireStyles
 @include('layout.nav')
