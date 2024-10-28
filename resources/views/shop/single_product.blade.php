@@ -1,7 +1,7 @@
 @section('metadata')
     <meta name="title" property="og:title" content="{{ $product->product_name }}">
     <meta name="description" property="og:description" content="{{ $product->short_description }}">
-    <meta name="keywords" content="{{ $product->product_name }}">
+    <meta name="keywords" content="{{ $product->meta_keywords }}">
     <meta name="author" content="Gamalaghar Ecommerce">   
 @endsection
 
