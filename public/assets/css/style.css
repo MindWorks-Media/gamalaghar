@@ -1,71 +1,37 @@
 @charset "UTF-8";
-/*-----------------------------------------------------------------------------------
 
-    Item Name: Ekka - Ecommerce HTML Template + Admin Dashboard.
-    Author: ashishmaraviya
-    Version: 3.7
-    Copyright 2023
-	Author URI: https://themeforest.net/user/ashishmaraviya
+@font-face {
+    font-family: "Neurial Grotesk";
+    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
 
------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------
-    Included CSS INDEX
------------------------------------------------------------------------------------
+@font-face {
+    font-family: "Neurial Grotesk";
+    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 
-01. Typography
-02. Components
-    - Helper
-    - Common
-    - Popup Model
-    - Breadcrumb
-03. Layout
-    - Header Section
-    - Mainslider Section
-    - Product Tab Section
-    - Banner Section
-    - Category Section
-    - Specials Section
-    - Services Section
-    - Offer Section
-    - New Product Section
-    - Testimonial Section
-    - Brand Section
-    - Instagram Section
-    - Footer Section
-    - Quickview Section
-    - Category Section
-    - Category Sidebar
-04. Pages
-    - Shop Page
-    - Login Page
-    - Register Page
-    - About us Page
-    - Term Page
-    - Contact us Page
-    - Faq Page
-    - Single Product Page
-    - Blog Page
-    - Cart Page
-    - Compare Page
-    - Track Order Page
-    - Checkout Page
-    - Elements Tabs Page
-    - Elements Categories Page
-    - Elements Buttons Page
-    - Elements Products Page
-    - Elements Title Page
-    - Elements Coming-Soon Page
-    - Elements Blog Page
-    - Elements Typography Page
-    - Vendor Page
-    - User Page
-    - Offer Page
-    - Thank you Page
+@font-face {
+    font-family: "Neurial Grotesk";
+    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
 
------------------------------------------------------------------------------------*/
-/*-------------------------------------------------
-  Fonts Family & Style CSS
----------------------------------------------------*/
+@font-face {
+    font-family: "Neurial Grotesk";
+    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+/* 
 @font-face {
     font-family: "Montserrat";
     src: url("./../fonts/montserrat/Montserrat-Regular.ttf") format("truetype");
@@ -198,14 +164,14 @@
     src: url("./../fonts/oswald/Oswald-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
-}
+} */
 /*-------------------------------------------------
   Helper Class
 ---------------------------------------------------*/
 body {
     margin: 0 auto;
     background-color: #ffffff;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 14px;
     font-weight: 400;
     font-style: normal;
@@ -5284,7 +5250,7 @@ textarea.form-control.is-invalid {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -5439,7 +5405,7 @@ textarea.form-control.is-invalid {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -13949,7 +13915,7 @@ body {
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-weight: 300;
     top: 0 !important;
 }
@@ -13959,7 +13925,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 
 /*----  Section  ----*/
@@ -14111,7 +14077,7 @@ h6 {
     position: relative;
 }
 .section-title .ec-title {
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 30px;
     font-weight: 800;
     margin-bottom: 7px;
@@ -16329,7 +16295,7 @@ h6 {
     color: #444444;
     display: block;
     font-size: 15px;
-    font-family: "Montserrat";
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     line-height: 22px;
     font-weight: 700;
     margin: 0 auto;
@@ -16805,7 +16771,7 @@ h6 {
     -ms-flex-align: center;
     align-items: center;
     position: relative;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-main-menu ul li a .fi.fi-rr-sort-amount-down-alt {
     font-size: 24px;
@@ -17271,7 +17237,7 @@ body.ec-open:before {
 .ec-side-cart .ec-cart-inner .ec-cart-title .cart_title {
     font-size: 17px;
     color: #555;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-weight: 600;
 }
 .ec-side-cart .ec-cart-inner .ec-cart-title .ec-close {
@@ -17342,7 +17308,7 @@ body.ec-open:before {
 .ec-side-cart .ec-menu-title .menu_title {
     font-size: 18px;
     color: #692c91;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-weight: 600;
 }
 .ec-side-cart .ec-menu-title .ec-close {
@@ -18352,7 +18318,7 @@ button.btn-close.qty_close {
     font-size: 16px;
     line-height: 1.5;
     font-weight: 400;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-product-inner .ec-pro-content .ec-pro-title a:hover {
     color: #692c91;
@@ -18377,7 +18343,7 @@ button.btn-close.qty_close {
     color: #692c91;
     font-weight: 700;
     font-size: 15px;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-product-inner .ec-pro-content .ec-price span.old-price {
     font-size: 15px;
@@ -18880,7 +18846,7 @@ section.ec-test-section {
     flex-direction: column;
 }
 .ec-test-section .ec-test-name {
-    font-family: "Montserrat";
+    font-family: "Neurial Grotesk";
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 6px;
@@ -19084,7 +19050,7 @@ section.ec-instagram-section {
     border-top: 1px solid #eeeeee;
 }
 .ec-footer .footer-top .ec-footer-widget .ec-footer-heading {
-    font-family: "Montserrat";
+    font-family: "Neurial Grotesk";
     font-size: 17px;
     font-weight: 600;
     margin-bottom: 11px;
@@ -19678,7 +19644,7 @@ div#ec_news_signup {
 .ec-category-section .ec-cat-tab-nav .cat-link .cat-desc span {
     margin-top: 5px;
     font-size: 17px;
-    font-family: "Montserrat";
+    font-family: "Neurial Grotesk";
     font-weight: 700;
     color: #444444;
     letter-spacing: 0;
@@ -20175,7 +20141,7 @@ select::-ms-expand {
     position: relative;
     display: block;
     color: #692c91;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-sidebar-wrap .h3 {
     font-size: 18px;
@@ -20414,7 +20380,7 @@ select::-ms-expand {
     border-bottom: none;
     background: #f5f5f5;
     padding: 21px 15px 15px;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     border: 1px solid #eeeeee;
 }
 
@@ -20423,7 +20389,7 @@ select::-ms-expand {
     color: #692c91;
     display: block;
     font-size: 16px;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-weight: 600;
     line-height: 20px;
     background: #f7f7f7;
@@ -20885,7 +20851,7 @@ select::-ms-expand {
     font-weight: 700;
     letter-spacing: 0;
     text-align: left;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-cms-block p {
     font-size: 14px;
@@ -21110,7 +21076,7 @@ select::-ms-expand {
     background-color: #fff;
 }
 .ec_contact_info .ec_contact_info_head {
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 19px;
@@ -21217,7 +21183,7 @@ h2.ec-faq-heading {
     padding: 0;
     margin-bottom: 15px;
     margin-top: 2px;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 
 .ec-faq-block {
@@ -21256,7 +21222,7 @@ h4.ec-faq-title {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 h4.ec-faq-title::after {
     content: "\f107";
@@ -21424,7 +21390,7 @@ h4.ec-faq-title::after {
     line-height: 1.5;
     letter-spacing: 0.5px;
     font-weight: 400;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .product_page
     .ec-sidebar-slider
@@ -21494,7 +21460,7 @@ h4.ec-faq-title::after {
     max-width: 100%;
 }
 .product_page .ec-sb-slider-title {
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     text-decoration: none;
     color: #212121;
     display: block;
@@ -21656,7 +21622,7 @@ h4.ec-faq-title::after {
     margin: 0 0 20px 0;
     text-decoration: none;
     display: block;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-weight: 800;
     line-height: 30px;
     letter-spacing: 0.02rem;
@@ -21715,7 +21681,7 @@ h4.ec-faq-title::after {
     letter-spacing: 0;
     word-break: break-all;
     line-height: 1.7;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .single-pro-content .ec-single-sales {
     margin: 25px 0 30px 0;
@@ -21866,7 +21832,7 @@ h4.ec-faq-title::after {
     font-weight: 700;
     font-size: 22px;
     line-height: 1.2;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     letter-spacing: 0;
 }
 .single-pro-content .ec-pro-variation {
@@ -21895,7 +21861,7 @@ h4.ec-faq-title::after {
     line-height: 1.1;
     letter-spacing: 0.04rem;
     text-transform: uppercase;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .single-pro-content
     .ec-pro-variation
@@ -22271,7 +22237,7 @@ i.ecicon.eci-star-o {
 
 .tab-pane p {
     color: #777;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 14px;
     font-weight: 500;
 }
@@ -22317,7 +22283,7 @@ i.ecicon.eci-star-o {
 }
 .ec-single-pro-tab-content .ec-single-pro-tab-moreinfo p {
     color: #777;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 15px;
     font-weight: 500;
 }
@@ -22414,7 +22380,7 @@ i.ecicon.eci-star-o {
     font-weight: 700;
     line-height: 1;
     margin-bottom: 10px;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-single-pro-tab-content .ec-ratting-content .ec-ratting-star {
     display: -webkit-box;
@@ -22768,7 +22734,7 @@ i.ecicon.eci-star-o {
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-weight: 600;
     line-height: 1.5;
     letter-spacing: 0;
@@ -22795,7 +22761,7 @@ i.ecicon.eci-star-o {
     letter-spacing: 0;
     word-break: break-all;
     line-height: 24px;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-blog-inner .ec-blog-btn a.btn {
     min-width: 130px;
@@ -22818,7 +22784,7 @@ i.ecicon.eci-star-o {
     letter-spacing: 0;
     line-height: 1;
     font-weight: 600;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-sidebar-recent-blog .ec-sidebar-block-item .ec-blog-date {
     font-size: 16px;
@@ -22902,7 +22868,7 @@ i.ecicon.eci-star-o {
 }
 
 .ec-blog-detail .ec-blog-title {
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-weight: 600;
     font-size: 24px;
     letter-spacing: 0;
@@ -22960,7 +22926,7 @@ i.ecicon.eci-star-o {
 }
 .ec-blog-comment-wrapper .ec-single-comment-wrapper h5 {
     color: #777;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 15px;
     font-weight: 600;
     text-transform: uppercase;
@@ -23638,7 +23604,7 @@ i.ecicon.eci-star-o {
     position: relative;
     display: block;
     color: #555;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     letter-spacing: 0;
     margin: 0 auto;
     text-align: center;
@@ -23725,7 +23691,7 @@ i.ecicon.eci-star-o {
     -ms-flex-align: center;
     align-items: center;
     color: #ffffff;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     background-color: #692c91;
     letter-spacing: 0;
     padding: 15px;
@@ -23768,7 +23734,7 @@ i.ecicon.eci-star-o {
     justify-content: space-between;
 }
 .ec-trackorder-top .ec-order-id {
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 25px;
     font-weight: 600;
     line-height: 40px;
@@ -23918,7 +23884,7 @@ i.ecicon.eci-star-o {
     position: relative;
     display: block;
     color: #444444;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     line-height: 1;
 }
 .checkout_page .ec-checkout-wrap .ec-check-login h3 {
@@ -24231,12 +24197,12 @@ i.ecicon.eci-star-o {
 .ec-checkout-summary .ec-checkout-summary-total .text-left {
     font-size: 16px;
     font-weight: 700;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-checkout-summary .ec-checkout-summary-total .text-right {
     font-size: 16px;
     font-weight: 700;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 
 /*-----  Sidebar Page CSS  ------*/
@@ -24582,7 +24548,7 @@ i.ecicon.eci-star-o {
 .ec-tab-wrapper-3 .ec-single-pro-tab-content .ec-single-pro-tab-desc p,
 .ec-tab-wrapper-4 .ec-single-pro-tab-content .ec-single-pro-tab-desc p {
     margin: 0;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 15px;
     font-weight: 500;
 }
@@ -25882,7 +25848,7 @@ i.ecicon.eci-star-o {
     min-height: 50px;
     border-radius: 60px;
     color: #fff;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-weight: bold;
     background: #222;
     cursor: pointer;
@@ -26500,7 +26466,7 @@ i.ecicon.eci-star-o {
 ---------------------------------------------------*/
 /* ----------- Start Product-DS -----------*/
 .ec-product-ds {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     text-align: center;
     border: 1px solid #eeeeee;
     overflow: hidden;
@@ -26709,7 +26675,7 @@ i.ecicon.eci-star-o {
 /* -----------/ END Product-DS -----------*/
 /* ----------- START Product-csc -----------*/
 .ec-product-csc {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     text-align: center;
     border: 1px solid #eeeeee;
     overflow: hidden;
@@ -26863,7 +26829,7 @@ i.ecicon.eci-star-o {
 /* -----------/ END Product-csc -----------*/
 /* ----------- START Product-fw -----------*/
 .ec-product-fw {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     text-align: center;
     background: #fff;
     overflow: hidden;
@@ -26966,7 +26932,7 @@ i.ecicon.eci-star-o {
     font-weight: 500;
     margin: 0 0 5px;
     color: #777;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-product-fw .ec-product-body .ec-rating {
     padding: 0;
@@ -27012,7 +26978,7 @@ i.ecicon.eci-star-o {
 /* -----------/ END Product-fw -----------*/
 /* ----------- START Product-tp -----------*/
 .ec-product-tp {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     text-align: center;
     overflow: hidden;
     -webkit-transition: all 0.4s ease-out;
@@ -27169,7 +27135,7 @@ i.ecicon.eci-star-o {
     padding: 15px;
     border: 1px solid;
     border-color: #eeeeee;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     text-align: center;
     background-color: #fff;
     overflow: hidden;
@@ -27985,7 +27951,7 @@ i.ecicon.eci-star-o {
 /* -----------/ END Product-sup -----------*/
 /* ----------- START Product-sbtn -----------*/
 .ec-product-sbtn {
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     text-align: center;
 }
 .ec-product-sbtn:hover {
@@ -28149,7 +28115,7 @@ i.ecicon.eci-star-o {
 .ec-product-sbtn .ec-title a {
     -webkit-transition: all 500ms;
     transition: all 500ms;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-product-sbtn .ec-title a:hover {
     text-decoration: none;
@@ -28483,7 +28449,7 @@ i.ecicon.eci-star-o {
 
 .ec-title a {
     color: #777;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 15px;
     font-weight: 500;
     white-space: nowrap;
@@ -28667,7 +28633,7 @@ i.ecicon.eci-star-o {
     margin: 0;
     color: #777;
     font-size: 16px;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 
 /*-----  Title Section-1 CSS  -----*/
@@ -29310,10 +29276,10 @@ input[type="email"]:focus::-webkit-input-placeholder {
     font-weight: 500;
 }
 .ec-coming-soon-02 .number {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-coming-soon-02 ::-webkit-input-placeholder {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-coming-soon-02 .countdown > div {
     float: left;
@@ -29336,7 +29302,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
 .ec-coming-soon-02 p.t-text {
     line-height: 26px;
     opacity: 0.9;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-coming-soon-02 .countdown span {
     position: relative;
@@ -29461,7 +29427,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
     -webkit-transition: all, 0.5s;
     transition: all, 0.5s;
     line-height: 45px;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-card-grid-space .ec-card h1 {
     margin: 0;
@@ -29471,7 +29437,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
     color: #ffffff;
     -webkit-transition: all, 0.5s;
     transition: all, 0.5s;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -29484,7 +29450,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
     color: #ffffff;
     -webkit-transition: all, 0.5s;
     transition: all, 0.5s;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-card-grid-space .ec-card .ec-date {
     position: absolute;
@@ -29497,7 +29463,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
     opacity: 0.8;
     -webkit-transition: all, 0.5s;
     transition: all, 0.5s;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .ec-card-grid-space .ec-card .ec-tags {
     display: -webkit-box;
@@ -29891,7 +29857,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     -webkit-transition: all 0.2s;
     transition: all 0.2s;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 20px;
 }
 .ec-blog-card .ec-title-content h3 a:hover {
@@ -29932,7 +29898,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
     z-index: 20;
     -webkit-transition: all 0.6s;
     transition: all 0.6s;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 14px;
 }
 .ec-blog-card .ec-card-info a {
@@ -30450,7 +30416,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
 .typography h5,
 .typography h6 {
     margin-bottom: 30px;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
 }
 .typography .ec-fc {
     color: #692c91;
@@ -30525,7 +30491,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
     margin-top: 10px;
     counter-increment: count;
     color: #692c91;
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     font-size: 25px;
     text-transform: uppercase;
 }
@@ -30880,7 +30846,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
     .info
     .ec-catalog-pro-count
     h6 {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
     color: #777;
     font-size: 14px;
 }
@@ -32860,7 +32826,8 @@ input[type="email"]:focus::-webkit-input-placeholder {
     letter-spacing: 0.04rem;
 }
 .ec-offer-counter .numbers {
-    font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Neurial Grotesk", Arial, sans-serif;
+    /* font-family: "Montserrat", Arial, sans-serif; */
     color: #fff;
     font-size: 25px;
 }
