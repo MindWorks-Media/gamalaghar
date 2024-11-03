@@ -14,7 +14,7 @@
     <meta name="msapplication-TileImage" content="{{ url('assets/img/gamala-ghar-logo.png') }}" />
 
     <!-- css Icon Font -->
-    {{-- <link rel="stylesheet" href="{{ url('assets/css/ecicons.min.css') }}" /> --}}
+    <link rel="stylesheet" href="{{ url('assets/css/ecicons.min.css') }}" />
 
     <!-- css All Plugins Files -->
     {{-- <link rel="stylesheet" href="{{ url('assets/css/animate.css') }}" /> --}}
