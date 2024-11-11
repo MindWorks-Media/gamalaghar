@@ -53,6 +53,7 @@
     @livewireStyles()
 
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.8/css/layui.css" /> --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
 
 

@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
-@font-face {
+/* @font-face {
     font-family: "Neurial Grotesk";
-    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Regular.woff2") format("woff2");
+    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Regular.woff2")
+        format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -10,7 +11,8 @@
 
 @font-face {
     font-family: "Neurial Grotesk";
-    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Medium.woff2") format("woff2");
+    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Medium.woff2")
+        format("woff2");
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -18,7 +20,8 @@
 
 @font-face {
     font-family: "Neurial Grotesk";
-    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Bold.woff2") format("woff2");
+    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Bold.woff2")
+        format("woff2");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -26,12 +29,13 @@
 
 @font-face {
     font-family: "Neurial Grotesk";
-    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Black.woff2") format("woff2");
+    src: url("./../fonts/neurial-grotesk/NeurialGrotesk-Black.woff2")
+        format("woff2");
     font-weight: 900;
     font-style: normal;
     font-display: swap;
-}
-/* 
+} */
+/*
 @font-face {
     font-family: "Montserrat";
     src: url("./../fonts/montserrat/Montserrat-Regular.ttf") format("truetype");
@@ -171,7 +175,7 @@
 body {
     margin: 0 auto;
     background-color: #ffffff;
-    font-family: "Neurial Grotesk", Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 14px;
     font-weight: 400;
     font-style: normal;
@@ -1552,8 +1556,6 @@ progress {
     border-color: #555;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
-
-
 
 .form-check-input[disabled] ~ .form-check-label {
     opacity: 0.5;
@@ -5891,7 +5893,6 @@ textarea.form-control.is-invalid {
 .carousel-item:hover img {
     transform: scale(1.5); /* Zoom in by 20% on hover */
 }
-
 
 .spinner-border {
     display: inline-block;
@@ -16758,8 +16759,8 @@ h6 {
 .ec-main-menu ul li a {
     height: 100%;
     font-size: 14px;
-    line-height: 50px;
-    font-weight: 600;
+    line-height: 30px;
+    font-weight: 500;
     text-decoration: none;
     letter-spacing: 0;
     text-transform: uppercase;
@@ -16771,7 +16772,8 @@ h6 {
     -ms-flex-align: center;
     align-items: center;
     position: relative;
-    font-family: "Neurial Grotesk", Arial, sans-serif;
+    /* font-family: "Neurial Grotesk", Arial, sans-serif; */
+    font-family: 'Poppins', serif;
 }
 .ec-main-menu ul li a .fi.fi-rr-sort-amount-down-alt {
     font-size: 24px;
@@ -21582,11 +21584,13 @@ h4.ec-faq-title::after {
 .single-slide.zoom-image-hover .img-responsive {
     transition: transform 0.5s ease;
     transform-origin: center center; /* Default zoom origin */
-  }
+}
 
-  .single-slide.zoom-image-hover:hover .img-responsive {
-    transform: scale(1.8); /* Adjust the scale value to control the zoom level */
-  }
+.single-slide.zoom-image-hover:hover .img-responsive {
+    transform: scale(
+        1.8
+    ); /* Adjust the scale value to control the zoom level */
+}
 
 .single-nav-thumb {
     width: 100%;
@@ -23897,10 +23901,6 @@ i.ecicon.eci-star-o {
 .checkout_page .ec-checkout-wrap .ec-check-bill .ec-check-subtitle {
     margin-bottom: 10px;
 }
-
-
-
-
 
 .checkout_page .ec-sidebar-wrap {
     border: 1px solid #ededed;
@@ -33609,7 +33609,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
     color: #692c91;
 }
 
-.email::placeholder{
+.email::placeholder {
     color: rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -33622,7 +33622,7 @@ input[type="email"]:focus::-webkit-input-placeholder {
     cursor: pointer;
 }
 
-.user-profile{
+.user-profile {
     color: #692c91;
 }
 
@@ -33634,23 +33634,22 @@ input[type="email"]:focus::-webkit-input-placeholder {
 }
 /*# sourceMappingURL=style.css.map */
 
-.ec-slide-content{
+.ec-slide-content {
     padding: 0;
 }
 
-.best-selling-side{
+.best-selling-side {
     padding: 0;
 }
 
-.feature-banner{
+.feature-banner {
     padding: 0 50px;
 }
 
-.unique-cart-form{
+.unique-cart-form {
     display: flex;
     justify-content: space-between;
 }
-
 
 /* size button on the single product page */
 .size-option {
@@ -33671,6 +33670,3 @@ input[type="email"]:focus::-webkit-input-placeholder {
     background-color: #f0f0f0 !important; /* Highlight color */
     border: 1px solid #007bff !important; /* Optional border color */
 }
-
-
-

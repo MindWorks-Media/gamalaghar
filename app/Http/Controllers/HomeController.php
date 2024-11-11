@@ -19,22 +19,22 @@ class HomeController extends Controller
     public function index()
     {
         $mainCategory = MainCategory::with('subcategories')->get();
-        $product = Product::with(['media', 'productsizeprice','productImages'])->latest()->get();
-         // Loop through each product to get its reviews and average rating
-    foreach ($product as $products) {
-        // Get the user reviews for the current product
-        $productReviews = UserReview::join('users', 'users.id', '=', 'user_reviews.user_id')
-            ->where('user_reviews.product_id', $products->id)
-            ->get();
-        // Add the reviews to the array
-        $userReviews[$products->id] = $productReviews;
-        // Calculate the average rating for the current product
-        $userAverageRating = UserReview::where('product_id', $products->id)
-            ->select(DB::raw('AVG(user_reviews.user_rating) as average_rating'))
-            ->first();
-        // Add the average rating to the array
-        $averageRatingValues[$products->id] = $userAverageRating->average_rating ?? 0;
-    }
+    //     $product = Product::with(['media', 'productsizeprice','productImages'])->latest()->get();
+    //      // Loop through each product to get its reviews and average rating
+    // foreach ($product as $products) {
+    //     // Get the user reviews for the current product
+    //     $productReviews = UserReview::join('users', 'users.id', '=', 'user_reviews.user_id')
+    //         ->where('user_reviews.product_id', $products->id)
+    //         ->get();
+    //     // Add the reviews to the array
+    //     $userReviews[$products->id] = $productReviews;
+    //     // Calculate the average rating for the current product
+    //     $userAverageRating = UserReview::where('product_id', $products->id)
+    //         ->select(DB::raw('AVG(user_reviews.user_rating) as average_rating'))
+    //         ->first();
+    //     // Add the average rating to the array
+    //     $averageRatingValues[$products->id] = $userAverageRating->average_rating ?? 0;
+    // }
         if (auth()->check()) {
             $countWishList = Wishlist::where('user_id', auth()->user()->id)->count();
             $countCarts = Cart::where('user_id', auth()->user()->id)->count();
@@ -54,18 +54,21 @@ class HomeController extends Controller
             $mainCategory = MainCategory::with('subcategories')->get();
         }
         $feauturedProducts = Product::with(['media', 'productsizeprice','productImages'])->where('is_featured', 1)->take(8)->get();
+        // dd($feauturedProducts);
         $faqs = Faq::all();
-        return view('home.home', compact(
-            'mainCategory',
-            'product',
-            'countWishList',
-            'cart',
-            'cartproductImages',
-            'countCarts',
-            'faqs',
-            'userReviews',
-            'averageRatingValues',
-            'feauturedProducts'
+        // return view('home.home', compact(
+        //     'mainCategory',
+        //     'product',
+        //     'countWishList',
+        //     'cart',
+        //     'cartproductImages',
+        //     'countCarts',
+        //     'faqs',
+        //     'userReviews',
+        //     'averageRatingValues',
+        //     'feauturedProducts'
+        // ));
+        return view('home.home', compact('mainCategory','countWishList','cart','cartproductImages','countCarts','faqs','feauturedProducts'
         ));
     }
 }
