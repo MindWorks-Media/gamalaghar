@@ -1,8 +1,8 @@
 <!-- faq sec Start -->
-<section class="ec-faq-sec section-space-p">
+<section class="ec-faq-sec section-space-p sec-background">
     <div class="container">
-        <div class="row">
-            {{-- <div class="col-lg-6 col-md-12"> --}}
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 col-md-12">
                 <div class="faq-detail">
                     <div class="faq-title">
                         <h3>Find frequently asked questions and
@@ -27,7 +27,7 @@
                         @endforeach
                     </div>
                 </div>
-            {{-- </div> --}}
+            </div>
             {{-- <div class="col-lg-6 col-md-12">
                 <div class="faq-img">
                     <img src="{{ url('assets/img/faq.png') }}" alt="">

@@ -73,9 +73,9 @@
 </section>
 
 <!-- Service section End -->
-@include('home.bottom_banner')
 @include('home.faq')
 @include('home.get_in_touch')
+@include('home.bottom_banner')
 @include('layout.footer')
 @livewireScripts
 </body>

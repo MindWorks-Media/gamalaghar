@@ -54,21 +54,15 @@
 
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.8/css/layui.css" /> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
-
-
-
 </head>
-
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WH6HCNY10L"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-
     function gtag() {
         dataLayer.push(arguments);
     }
     gtag('js', new Date());
-
     gtag('config', 'G-WH6HCNY10L');
 </script>
 

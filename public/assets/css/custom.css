@@ -47,3 +47,16 @@ body {
 a {
     font-family: "Poppins", sans-serif;
 }
+
+
+.sec-background {
+    background: #f8f8f8;
+}
+
+.detail {
+    margin-bottom: 0px;
+}
+
+.newsletter {
+    padding: 35px 0px !important;
+}

@@ -19,6 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         $mainCategory = MainCategory::with('subcategories')->get();
+        $subcats = SubCategory::take(4)->latest()->get();
     //     $product = Product::with(['media', 'productsizeprice','productImages'])->latest()->get();
     //      // Loop through each product to get its reviews and average rating
     // foreach ($product as $products) {
@@ -53,7 +54,7 @@ class HomeController extends Controller
             $cartproductImages = [];
             $mainCategory = MainCategory::with('subcategories')->get();
         }
-        $feauturedProducts = Product::with(['media', 'productsizeprice','productImages'])->where('is_featured', 1)->take(8)->get();
+        $feauturedProducts = Product::select('id','product_name','slug','discount')->with(['media', 'productsizeprice','productImages'])->where('is_featured', 1)->take(8)->get();
         // dd($feauturedProducts);
         $faqs = Faq::all();
         // return view('home.home', compact(
@@ -68,7 +69,7 @@ class HomeController extends Controller
         //     'averageRatingValues',
         //     'feauturedProducts'
         // ));
-        return view('home.home', compact('mainCategory','countWishList','cart','cartproductImages','countCarts','faqs','feauturedProducts'
+        return view('home.home', compact('mainCategory','countWishList','cart','cartproductImages','countCarts','faqs','feauturedProducts','subcats'
         ));
     }
 }

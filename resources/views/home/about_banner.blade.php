@@ -1,5 +1,5 @@
 <!-- About Banner Start -->
-<section class="section ec-about-sec section-space-p">
+<section class="section ec-about-sec section-space-p mt-2">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
