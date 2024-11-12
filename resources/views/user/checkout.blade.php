@@ -1,6 +1,5 @@
 @include('layout.header')
 @include('layout.nav')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Ec checkout page -->
 <section class="ec-page-content section-space-p">
     <div class="container">
@@ -9,7 +8,7 @@
             <div class="row">
                 <div class="ec-checkout-leftside col-lg-8 col-md-12">
                     <!-- Checkout content Start -->
-                    <div class="ec-checkout-content">
+                    <div class="ec-checkout-content" style="padding: 10px 20px; border:1px solid #e5e7eb ">
                         <div class="ec-checkout-inner">
                             <div class="ec-checkout-wrap padding-bottom-3">
                                 <div class="ec-checkout-block ec-check-bill">
@@ -45,10 +44,10 @@
                                                 </div>
 
 
-                                                <div class="col-md-6 mb-5">
+                                                <div class="col-md-6">
                                                     <label>Province<span class="layui-font-red">*</span></label>
                                                     <span class="ec-bl-select-inner mb-0">
-                                                        <select class="select2" name="province_id" id="provinceOption">
+                                                        <select class="" name="province_id" id="provinceOption">
                                                             <option value=""></option>
                                                             @foreach ($provinces as $province)
                                                                 <option value="{{ $province->id }}">
@@ -61,10 +60,10 @@
                                                         <p class="text-danger mt-2">{{ $message }}</p>
                                                     @enderror
                                                 </div>
-                                                <div class="col-md-6 mb-5">
+                                                <div class="col-md-6">
                                                     <label>City<span class="layui-font-red">*</span></label>
                                                     <span class="ec-bl-select-inner mb-0">
-                                                        <select class="select2" name="city_id" id="cityOption">
+                                                        <select class="" name="city_id" id="cityOption">
                                                             <option value=""></option>
                                                         </select>
                                                     </span>
@@ -72,10 +71,10 @@
                                                         <p class="text-danger mt-2">{{ $message }}</p>
                                                     @enderror
                                                 </div>
-                                                <div class="col-md-6 mb-5">
+                                                <div class="col-md-6">
                                                     <label>Area<span class="layui-font-red">*</span></label>
                                                     <span class="ec-bl-select-inner mb-0">
-                                                        <select class="select2" name="area_id" id="areaOption">
+                                                        <select class="" name="area_id" id="areaOption">
                                                             <option value=""></option>
                                                         </select>
                                                         @error('area_id')
@@ -83,7 +82,7 @@
                                                         @enderror
                                                     </span>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 mt-4">
                                                     <label>Address Line<span class="layui-font-red">*</span></label>
                                                     <input type="text" name="shipping_address"
                                                         placeholder="Address Line"

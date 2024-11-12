@@ -1,0 +1,218 @@
+$color-purple-dark: #1d0430;
+$color-purple-mid: #503763;
+$color-purple-light: #9c83af;
+$color-teal-dark: #041b30;
+$color-teal-mid: #374e63;
+$color-teal-light: #839aaf;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-grey: #151f29;
+$color-cherry: #ad0731;
+
+
+
+.swip-button {
+  background: linear-gradient(
+    to right,
+    $color-purple-dark,
+    $color-purple-light
+  );
+  border: none;
+  border-radius: 8px;
+  color: $color-white;
+  padding: 10px 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  transition: all 0.5s ease;
+
+  &:hover,
+  &:focus {
+    background: linear-gradient(
+      to right,
+      $color-purple-dark 60%,
+      $color-purple-light
+    );
+  }
+}
+
+.signposting-item {
+  border: 2px solid $color-purple-dark;
+  border-radius: 8px;
+  -webkit-box-shadow: 5px 3px 11px 0px rgba(29, 4, 48, 1);
+  -moz-box-shadow: 5px 3px 11px 0px rgba(29, 4, 48, 1);
+  box-shadow: 5px 3px 11px 0px rgba(29, 4, 48, 1);
+  padding: 20px 12px;
+  transition: all 0.3s ease;
+  height: 100%;
+
+  &:hover,
+  &:focus {
+    transform: translateY(-10px);
+
+    .swip-button {
+      background: linear-gradient(
+        to right,
+        $color-purple-dark 60%,
+        $color-purple-light
+      );
+    }
+  }
+
+  &-icon {
+    .material-symbols-outlined {
+      color: $color-teal-mid;
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+  }
+
+  &-title {
+    margin-bottom: 12px;
+  }
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+
+  &-image {
+    position: relative;
+    aspect-ratio: 20 / 10;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+
+    img {
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba($color-white, 0.4);
+    border-radius: 8px;
+    padding: 16px;
+
+    p {
+      margin: 0;
+      font-size: 20px;
+    }
+  }
+}
+
+.gallery {
+  .swiper-gallery {
+    overflow: hidden;
+    position: relative;
+    
+    .swiper-pagination {
+      position: absolute;
+      top: 0;
+      bottom: auto;
+      right: 0;
+      text-align: right;
+      margin: 0;
+      padding: 30px 30px 0 0;
+    }
+  }
+}
+
+.swiper-slide {
+  height: auto;
+}
+
+.swiper-pagination {
+  position: relative;
+  margin-top: 40px;
+  
+  .swiper-pagination-bullet {
+    background-color: $color-white;
+    width: 20px;
+    height: 20px;
+    
+    &.swiper-pagination-bullet-active {
+      background-color: $color-purple-light;
+    }
+  }
+}
+.slider-button-wrap {
+  margin-top: 32px;
+  column-gap: 24px;
+  
+
+  .slider-button-prev,
+  .slider-button-next {
+    background-color: $color-purple-mid;
+    border: 2px solid $color-purple-mid;
+    color: $color-purple-dark;
+    padding: 25px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+
+    @media (min-width: 768px) {
+      padding: 40px;
+    }
+
+    &:hover,
+    &:focus {
+      background: rgba($color-purple-dark, 0);
+
+      .icon::before {
+        color: $color-purple-dark;
+      }
+    }
+    
+    &.swiper-button-disabled {
+      background: rgba($color-purple-dark, 0.6);
+      border-color: rgba($color-purple-dark, 0.05);
+      pointer-events: none;
+    }
+
+    .icon {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before {
+        color: $color-white;
+        font-family: "Material Symbols Outlined";
+        font-size: 2rem;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .slider-button-prev {
+    .icon::before {
+      content: "\e5cb";
+    }
+  }
+
+  .slider-button-next {
+    .icon::before {
+      content: "\e5cc";
+    }
+  }
+}

@@ -19,6 +19,23 @@ body {
     transform: translate(0px, -1.5%);
 }
 
+.wish-icon {
+    position: absolute;
+    top: 18px;
+     right: 22px;
+     transform: scale(0.9);
+     opacity: 0;
+     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.ec-product-inner:hover .wish-icon {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    z-index: 100;
+    
+}
+
 .ec-about-sec {
     background: #f8f8f8 !important;
 }
@@ -63,12 +80,10 @@ a {
     padding: 35px 0px !important;
 }
 
-.ec-compare-inner {
-    padding: 0px 50px;
-}
+
 
 .main-banner {
-    padding: 0px 50px;
+    /* padding: 0px 50px; */
 }
 .ec-footer {
     padding: 0px 50px;
@@ -103,4 +118,19 @@ a {
 
 .single-pro-content .ec-single-price span.new-price {
     font-weight: 400 !important;
+}
+
+.icon {
+    /* border: 1px solid; */
+    padding: 5px 18px;
+    border-radius: 50%;
+    background: rgb(182 96 235);
+    color: white;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.icon:hover {
+    background: #692d8e;
+    transition: all 0.5s ease-in-out;
 }

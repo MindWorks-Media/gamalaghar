@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         $mainCategory = MainCategory::with('subcategories')->get();
-        $subcats = SubCategory::take(4)->latest()->get();
+        $subcats = SubCategory::all();
     //     $product = Product::with(['media', 'productsizeprice','productImages'])->latest()->get();
     //      // Loop through each product to get its reviews and average rating
     // foreach ($product as $products) {
