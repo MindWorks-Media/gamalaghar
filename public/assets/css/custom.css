@@ -5,6 +5,9 @@ body {
     font-style: normal;
     font-weight: normal;
 }
+.ec-product-inner {
+    position: relative;
+}
 
 .ec-product-inner:hover {
     -webkit-transition: all 0.3s ease-in-out;
@@ -48,7 +51,6 @@ a {
     font-family: "Poppins", sans-serif;
 }
 
-
 .sec-background {
     background: #f8f8f8;
 }
@@ -59,4 +61,46 @@ a {
 
 .newsletter {
     padding: 35px 0px !important;
+}
+
+.ec-compare-inner {
+    padding: 0px 50px;
+}
+
+.main-banner {
+    padding: 0px 50px;
+}
+.ec-footer {
+    padding: 0px 50px;
+}
+
+.ec-pro-variation
+    .ec-pro-variation-inner.ec-pro-variation-size
+    .ec-pro-variation-content
+    .active {
+    /* background: red !important; */
+    border: none !important;
+    background: #ff909d !important;
+    color: white !important;
+}
+
+.ec-pro-variation
+    .ec-pro-variation-inner.ec-pro-variation-size
+    .ec-pro-variation-content
+    li:hover {
+    background-color: #ff909d !important;
+}
+
+.size-option :active {
+    background: black;
+}
+
+.single-pro-content .ec-single-title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.single-pro-content .ec-single-price span.new-price {
+    font-weight: 400 !important;
 }

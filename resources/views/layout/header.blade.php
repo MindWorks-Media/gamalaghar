@@ -59,6 +59,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WH6HCNY10L"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
+
     function gtag() {
         dataLayer.push(arguments);
     }

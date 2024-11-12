@@ -46,10 +46,10 @@
                                 @forelse ($order_histories as $order_id => $orderItems)
                                     <tbody style="border-top: 0.8em solid transparent">
                                         <tr>
-                                            <th colspan="3"  style="color: #692c91 !important;">Order Number:
+                                            <th colspan="3" style="color: #692c91 !important;">Order Number:
                                                 {{ $orderItems->first()->order->order_number ?? 'N/A' }}
                                             </th>
-                                            <th colspan="3"  style="color: #692c91 !important;">Rs:
+                                            <th colspan="3" style="color: #692c91 !important;">Rs:
                                                 {{ $orderItems->first()->order->total_amount ?? 'N/A' }}
                                             </th>
                                             <!-- Display order_number -->
@@ -79,15 +79,19 @@
                                                         @endif
                                                     @endforeach
                                                 </td>
-                                                <td><span>{{ $order_history->product_name }}<b>{{" x " . $order_history->quantity}}</b></span> </td>
+                                                <td><span>{{ $order_history->product_name }}<b>{{ ' x ' . $order_history->quantity }}</b></span>
+                                                </td>
                                                 <td><span>{{ $order_history->size }}</span></td>
-                                                <td><span>Rs. {{ $order_history->quantity * $order_history->price }}</span></td>
+                                                <td><span>Rs.
+                                                        {{ $order_history->quantity * $order_history->price }}</span>
+                                                </td>
                                                 <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
-                                                            href="{{route('history.order-details', ['id' => $order_id])}}">View</a></span></td>
+                                                            href="{{ route('history.order-details', ['id' => $order_id]) }}">View</a></span>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    
+
                                 @empty
                                     <tr>
                                         <td colspan="5">No order history found.</td>

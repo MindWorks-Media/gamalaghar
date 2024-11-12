@@ -66,11 +66,17 @@
                                             </div>
                                             <div class="ec-pro-content">
                                                 <span class="ec-price px-4 mb-3 " style="gap: 20px">
-                                                       <a href="" style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">Add to Cart</a>
-                                                       <a href="" style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">Buy Now</a>
+                                                    <a href=""
+                                                        style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">Add
+                                                        to Cart</a>
+                                                    <a href=""
+                                                        style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">Buy
+                                                        Now</a>
                                                 </span>
                                             </div>
                                         </a>
+                                        <span style="position: absolute;top: 18px; right: 22px;z-index: 100;"><i
+                                                class="fi-rr-heart" style="font-size: 25px"></i></span>
                                     </div>
 
                                 </div>
@@ -123,12 +129,14 @@
                                                 <div class="ec-pro-rating px-3">
                                                 </div>
                                                 <span class="ec-price px-3 mb-1" style="margin-left: 5px">
-                                                        <span class="new-price">Plants</span>
+                                                    <span class="new-price">Plants</span>
                                                 </span>
                                             </div>
                                             <div class="ec-pro-content">
                                                 <span class="ec-price px-4 mb-3 " style="gap: 20px">
-                                                       <a href="{{ url('products/' . $subcat->slug) }}" style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">View Products</a>
+                                                    <a href="{{ url('products/' . $subcat->slug) }}"
+                                                        style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">View
+                                                        Products</a>
                                                 </span>
                                             </div>
                                         </a>

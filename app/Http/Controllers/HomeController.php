@@ -72,4 +72,9 @@ class HomeController extends Controller
         return view('home.home', compact('mainCategory','countWishList','cart','cartproductImages','countCarts','faqs','feauturedProducts','subcats'
         ));
     }
+
+    public function test()
+    {
+        return view('test');
+    }
 }

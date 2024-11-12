@@ -4,8 +4,26 @@
 <section class="ec-page-content section-space-p">
     <div class="container">
         <div class="row">
+            <!-- Sidebar Area Start -->
+            <div class="ec-shop-leftside ec-vendor-sidebar col-lg-3 col-md-12">
+                <div class="ec-sidebar-wrap ec-border-box">
+                    <!-- Sidebar Category Block -->
+                    <div class="ec-sidebar-block">
+                        <div class="ec-vendor-block">
+                            <div class="ec-vendor-block-items">
+                                <ul>
+                                    <li><a href="{{ url('profile') }}">User Profile</a></li>
+                                    <li><a href="{{ url('user/history') }}">Order History</a></li>
+                                    <li><a href="{{ url('wishlist') }}">Wishlist</a></li>
+                                    <li><a href="{{ url('cart') }}">Cart</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Compare Content Start -->
-            <div class="ec-wish-rightside col-lg-12 col-md-12">
+            <div class="ec-wish-rightside col-lg-9 col-md-12">
                 <!-- Compare content Start -->
                 <div class="ec-compare-content">
                     <div class="ec-compare-inner">
@@ -40,7 +58,7 @@
                                                                 @endif
                                                             @endforeach
                                                         </div>
-                                                        @if ($wishList->discount > 0)                                                            
+                                                        @if ($wishList->discount > 0)
                                                             <span class="percentage">20%</span>
                                                         @endif
                                                     </div>
@@ -58,7 +76,7 @@
                                                         <span class="new-price">Rs. {{ $wishList->price }}</span>
                                                     </span>
                                                     <span class="ec-com-remove ec-remove-wish">
-                                                        <a href="{{url('wishlist/delete/' .$wishList->wishlistid)}}">
+                                                        <a href="{{ url('wishlist/delete/' . $wishList->wishlistid) }}">
                                                             <i class="ecicon eci-trash-o">
                                                             </i>
                                                         </a>

@@ -146,9 +146,11 @@ class OrderController extends Controller
             $cartproductImages = [];
             $userDetails=[];
         }
+
         $order = Order::with('orderItems')->where('id', $id)->first();
         $productId = $order->orderItems->pluck('product_id')->toArray();
-        $productImages = Product::with('media')->whereIn('id', $productId)->get();
+        $productImages = Product::with('media','productImages')->whereIn('id', $productId)->get();
+        // dd($productImages);
         return view('user.order_details', compact('order', 'productImages', 'countWishList', 'countCarts', 'cart', 'cartproductImages', 'userDetails', 'mainCategory'));
     }
 }

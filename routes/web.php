@@ -40,6 +40,8 @@ Route::post('register', [UserController::class, 'store']);
 
 Route::get('complete_registration', [UserController::class, 'verifyMail']);
 
+Route::get('test',[HomeController::class, 'test'])->name('test');
+
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'login']);

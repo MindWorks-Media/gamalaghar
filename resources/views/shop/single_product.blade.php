@@ -2,7 +2,7 @@
     <meta name="title" property="og:title" content="{{ $product->product_name }}">
     <meta name="description" property="og:description" content="{{ $product->short_description }}">
     <meta name="keywords" content="{{ $product->meta_keywords }}">
-    <meta name="author" content="Gamalaghar Ecommerce">   
+    <meta name="author" content="Gamalaghar Ecommerce">
 @endsection
 
 @include('layout.header')
@@ -26,8 +26,10 @@
                                             <div class="carousel-indicators">
                                                 @if ($product->productImages->isNotEmpty() && $product->productImages->count() > 1)
                                                     @foreach ($product->productImages as $index => $productImage)
-                                                        <button type="button" data-bs-target="#carouselExampleIndicators"
-                                                            data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"
+                                                        <button type="button"
+                                                            data-bs-target="#carouselExampleIndicators"
+                                                            data-bs-slide-to="{{ $index }}"
+                                                            class="{{ $index == 0 ? 'active' : '' }}"
                                                             aria-label="Slide {{ $index + 1 }}"></button>
                                                     @endforeach
                                                 @endif
@@ -36,23 +38,28 @@
                                                 @if ($product->productImages->isNotEmpty())
                                                     @foreach ($product->productImages as $productImage)
                                                         @foreach ($productImage->getMedia('product_image') as $media)
-                                                            <div class="carousel-item {{ $loop->parent->first && $loop->first ? 'active' : '' }}">
+                                                            <div
+                                                                class="carousel-item {{ $loop->parent->first && $loop->first ? 'active' : '' }}">
                                                                 <img src="{{ $media->getUrl() }}" class="d-block w-100"
                                                                     alt="{{ $product->product_name }}">
                                                             </div>
                                                         @endforeach
                                                     @endforeach
                                                 @else
-                                                    <img class="main-image" src="{{ $product->getFirstMediaUrl('product_image') }}" alt="Product" />
+                                                    <img class="main-image"
+                                                        src="{{ $product->getFirstMediaUrl('product_image') }}"
+                                                        alt="Product" />
                                                 @endif
                                             </div>
 
                                             @if ($product->productImages->count() > 1)
-                                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                                <button class="carousel-control-prev" type="button"
+                                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                     <span class="visually-hidden">Previous</span>
                                                 </button>
-                                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                                <button class="carousel-control-next" type="button"
+                                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                     <span class="visually-hidden">Next</span>
                                                 </button>
@@ -94,7 +101,7 @@
                                 {{-- @dd($activeSizePrice, $lastSizeId) --}}
                                 <div class="ec-pro-variation">
                                     <div class="ec-pro-variation-inner ec-pro-variation-size">
-                                        <span>SIZE</span>
+                                        <span>Size</span>
                                         <div class="ec-pro-variation-content">
                                             <ul>
                                                 @foreach ($size as $sizeData)
@@ -177,8 +184,7 @@
                                 <div class="ec-t-review-wrapper">
                                     <div class="ec-t-review-item">
                                         <div class="ec-t-review-avtar">
-                                            <img src="{{ url('assets/img/review-image/1.jpg') }}"
-                                                alt="User Avatar" />
+                                            <img src="{{ url('assets/img/logo.png') }}" alt="User Avatar" />
                                         </div>
                                         <div class="ec-t-review-content">
                                             @forelse ($userReviews as $userReview)
