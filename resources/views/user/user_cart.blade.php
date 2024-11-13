@@ -68,7 +68,7 @@
 
                                                                         @if ($firstMedia)
                                                                             <img src="{{ $firstMedia->getUrl() }}"
-                                                                                class="prod-img">
+                                                                                class="prod-img" style="width: 100px">
                                                                         @endif
                                                                     @else
                                                                         <img class="prod-img"
