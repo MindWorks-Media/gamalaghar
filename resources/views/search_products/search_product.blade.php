@@ -10,7 +10,7 @@
         /* Adjust spacing as needed */
     }
 </style>
-<section class="ec-page-content ">
+<section class="ec-page-content mb-4">
     <div class="container">
         <div class="row">
             <!-- Sidebar Area Start -->
@@ -80,7 +80,6 @@
                 <div class="shop-pro-content">
                     <div class="shop-pro-inner">
                         <div class="row">
-
                             @forelse ($resultedProducts as $productData)
                                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
                                     <div class="ec-product-inner">
@@ -111,20 +110,32 @@
                                                     <a
                                                         href="{{ url('product/' . $productData->slug) }}">{{ $productData->product_name }}</a>
                                                 </div>
-                                                <div class="ec-pro-rating px-3">
+                                                <div class="ec-pro-rating px-3" style="margin-left: 5px">
                                                     @for ($i = 0; $i < 4; $i++)
                                                         <i class="ecicon eci-star fill"></i>
                                                     @endfor
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
-                                                <span class="ec-price px-3 mb-3">
+                                                <span class="ec-price px-3 mb-1" style="margin-left: 5px">
                                                     @if ($productData->productsizeprice->isNotEmpty())
                                                         <span class="new-price">Rs.
                                                             {{ $productData->product_price }}</span>
                                                     @endif
                                                 </span>
                                             </div>
+                                            <div class="ec-pro-content">
+                                                <span class="ec-price px-4 mb-3 " style="gap: 20px">
+                                                    <a href=""
+                                                        style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">Add
+                                                        to Cart</a>
+                                                    <a href="{{ url('product/' . $productData->slug) }}"
+                                                        style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">Buy
+                                                        Now</a>
+                                                </span>
+                                            </div>
                                         </a>
+                                        <span class="wish-icon"><i class="fi-rr-heart"
+                                                style="font-size: 25px"></i></span>
                                     </div>
                                 </div>
                             @empty

@@ -22,10 +22,10 @@ body {
 .wish-icon {
     position: absolute;
     top: 18px;
-     right: 22px;
-     transform: scale(0.9);
-     opacity: 0;
-     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    right: 22px;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .ec-product-inner:hover .wish-icon {
@@ -33,7 +33,6 @@ body {
     transform: scale(1);
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     z-index: 100;
-    
 }
 
 .ec-about-sec {
@@ -80,8 +79,6 @@ a {
     padding: 35px 0px !important;
 }
 
-
-
 .main-banner {
     /* padding: 0px 50px; */
 }
@@ -127,10 +124,12 @@ a {
     background: rgb(182 96 235);
     color: white;
     transition: all 0.5s ease-in-out;
-
 }
 
 .icon:hover {
     background: #692d8e;
     transition: all 0.5s ease-in-out;
+}
+.ec-product-inner .ec-pro-content .ec-price span.new-price {
+    color: #ed8e9f;
 }

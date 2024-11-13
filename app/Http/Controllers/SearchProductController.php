@@ -18,9 +18,8 @@ class SearchProductController extends Controller
         $minPrice = $request->min_price;
         $maxPrice = $request->max_price;
         $position = $request->position;
-        $query = Product::with(['media', 'productsizeprice'])
+        $query = Product::select('id','slug','product_name','product_price')->with(['media', 'productsizeprice'])
             ->where('product_name', 'like', '%' . $searchKeyword . '%');
-
         if (!is_null($minPrice)) {
             $query->where('product_price', '>=', $minPrice);
         }
@@ -33,9 +32,9 @@ class SearchProductController extends Controller
         } elseif ($position == "high-to-low") {
             $query->orderBy('product_price', 'desc');
         }
-        $resultedProducts = $query->paginate(8);
+        $resultedProducts = $query->paginate(9);
         $mainCategory = MainCategory::with('subcategories')->get();
-        $product = Product::with(['media', 'productImages','productsizeprice'])->latest()->get();
+        // $product = Product::with(['media', 'productImages','productsizeprice'])->latest()->get();
         // $productSizePrice=ProductSizePrice::where('')
         if (auth()->check()) {
             $countWishList = Wishlist::where('user_id', auth()->user()->id)->count();
@@ -58,7 +57,6 @@ class SearchProductController extends Controller
         return view('search_products.search_product', compact(
             'resultedProducts',
             'mainCategory',
-            'product',
             'countWishList',
             'cart',
             'cartproductImages',

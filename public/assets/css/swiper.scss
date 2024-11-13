@@ -123,7 +123,7 @@ $color-cherry: #ad0731;
   .swiper-gallery {
     overflow: hidden;
     position: relative;
-    
+
     .swiper-pagination {
       position: absolute;
       top: 0;
@@ -143,12 +143,12 @@ $color-cherry: #ad0731;
 .swiper-pagination {
   position: relative;
   margin-top: 40px;
-  
+
   .swiper-pagination-bullet {
     background-color: $color-white;
     width: 20px;
     height: 20px;
-    
+
     &.swiper-pagination-bullet-active {
       background-color: $color-purple-light;
     }
@@ -157,7 +157,7 @@ $color-cherry: #ad0731;
 .slider-button-wrap {
   margin-top: 32px;
   column-gap: 24px;
-  
+
 
   .slider-button-prev,
   .slider-button-next {
@@ -180,7 +180,7 @@ $color-cherry: #ad0731;
         color: $color-purple-dark;
       }
     }
-    
+
     &.swiper-button-disabled {
       background: rgba($color-purple-dark, 0.6);
       border-color: rgba($color-purple-dark, 0.05);
@@ -204,15 +204,15 @@ $color-cherry: #ad0731;
       }
     }
   }
-  .slider-button-prev {
-    .icon::before {
-      content: "\e5cb";
-    }
-  }
+//   .slider-button-prev {
+//     .icon::before {
+//       content: "\e5cb";
+//     }
+//   }
 
-  .slider-button-next {
-    .icon::before {
-      content: "\e5cc";
-    }
-  }
+//   .slider-button-next {
+//     .icon::before {
+//       content: "\e5cc";
+//     }
+//   }
 }
