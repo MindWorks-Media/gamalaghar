@@ -35,7 +35,11 @@
                                                 data-bs-target="#edit_modal">Edit Detail</a>
                                         </div>
                                         <div class="ec-vendor-block-detail">
-                                            <img class="v-img" src="{{ Avatar::create($user->name)->toBase64() }}"
+                                            @php
+                                            $user = \App\Models\User::find(auth()->user()->id);
+                                            $imageUrl = $user->getFirstMediaUrl('user_image');
+                                        @endphp
+                                            <img class="v-img" src="{{ $imageUrl ?: Avatar::create($user->name)->toBase64() }}"
                                                 alt="{{ $user->name }}">
                                             <h5 class="name">{{ $user->name }}</h5>
                                         </div>

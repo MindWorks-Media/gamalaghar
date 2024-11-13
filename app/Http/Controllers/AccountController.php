@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\MainCategory;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\UserDetail;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,6 +41,7 @@ class AccountController extends Controller
 
     public function edituserdetails(Request $request)
     {
+
         $user = User::find(auth()->user()->id);
         if (is_null($user)) {
             return back()->with('error', 'User not Found!');
@@ -50,13 +52,31 @@ class AccountController extends Controller
                     'name' => $request->name,
                     'email' => $request->email,
                     'phone' => $request->phone,
-                ]);
-                $user->userDetail()->updateOrCreate([
-                    // 'user_id'=>auth()->user()->id,
                     'address' => $request->address,
-                    'shipping_address' => $request->shipping_address,
-                    'secondary_phone' => $request->secondary_phone,
                 ]);
+                $checkuserdetail = UserDetail::where('user_id', $user->id)->first();
+                if ($checkuserdetail) {
+                    $checkuserdetail->update([
+                        'user_id'=>auth()->user()->id,
+                        'address' => $request->address,
+                        'shipping_address' => $request->shipping_address,
+                        'secondary_phone' => $request->secondary_phone,
+                    ]);
+                }else {
+                    UserDetail::create([
+                        'user_id'=>auth()->user()->id,
+                        'address' => $request->address,
+                        'shipping_address' => $request->shipping_address,
+                        'secondary_phone' => $request->secondary_phone,
+                    ]);
+                }
+                // $user->userDetail()->updateOrCreate([
+                //     // 'user_id'=>auth()->user()->id,
+                //     'address' => $request->address,
+                //     'shipping_address' => $request->shipping_address,
+                //     'secondary_phone' => $request->secondary_phone,
+                // ]);
+
                 if ($request->user_image) {
                     $user->clearMediaCollection('user_image');
                     $user->addMedia($request->user_image)->toMediaCollection('user_image');
