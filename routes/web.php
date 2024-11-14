@@ -105,3 +105,11 @@ Route::get('auth/google/callback', [SocialiteController::class, 'googleHandle'])
 Route::post('newsletter', [NewsLetterController::class, 'store']);
 
 Route::post('user-review',[UserReviewController::class,'store']);
+
+
+
+// cart
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'getCart'])->name('cart.get');
+Route::post('/cart/updt', [CartController::class, 'updateCart'])->name('cart.updt');
+Route::post('/delete-from-cart', [CartController::class, 'deleteFromCart'])->name('cart.delt');

@@ -276,6 +276,98 @@
             });
         });
     });
+
+
+
+    $(document).ready(function () {
+    // Listen for clicks on elements with the 'add-to-cart-btn' class
+    $('.add-to-cart-btn').on('click', function (e) {
+        e.preventDefault(); // Prevent the default link behavior
+
+        // Get product details from data attributes
+        const productId = $(this).data('product-id');
+        const name = $(this).data('name');
+        const price = $(this).data('price');
+        const imageUrl = $(this).data('image-url'); // Assuming you add a data attribute for the image URL
+
+        // Call the addToCart function with the product details
+        addToCart(productId, name, price, imageUrl);
+    });
+});
+
+function addToCart(productId, name, price, imageUrl) {
+    $.ajax({
+        url: '/add-to-cart',
+        type: 'POST',
+        data: {
+            product_id: productId,
+            name: name,
+            price: price,
+            quantity: 1,
+            image_url: imageUrl, // Send image URL if available
+            _token: $('meta[name="csrf-token"]').attr('content') // Include CSRF token for security
+        },
+        success: function (response) {
+            console.log(response.message); // Show success message
+            updateCartDisplay(response.cart); // Update cart display instantly
+
+            $('.ec-header-count.ec-cart-count.cart-count-lable.instant-count').text(response.cartCount);
+        },
+        error: function () {
+            alert('Failed to add item to cart');
+        }
+    });
+}
+
+function updateCartDisplay(cart) {
+    let cartContainer = $('.eccart-pro-items');
+    cartContainer.empty(); // Clear existing cart items
+
+    // Loop through each item in the cart and create an HTML structure for it
+    $.each(cart, function (index, item) {
+        cartContainer.append(`
+            <li>
+                <div class="sidecart_pro_img">
+                    <img src="${item.image_url}" class="main-image">
+                </div>
+                <div class="ec-pro-content">
+                    <a href="single-product-left-sidebar.html" class="cart_pro_title">${item.name}</a>
+                    <span class="cart-price">Rs. ${item.price} x <span class="qty-input">${item.quantity}</span></span>
+                    <div class="ec-pro-variation-inner ec-pro-variation-size">
+                        <span>SIZE: Small</span> <!-- Customize this if size is dynamic -->
+                    </div>
+                    <a href="#" class="remove" onclick="removeFromCart(${item.product_id})">×</a>
+                </div>
+            </li>
+        `);
+    });
+}
+
+
+function removeFromCart(productId) {
+    $.ajax({
+        url: '/delete-from-cart',
+        type: 'POST',
+        data: {
+            product_id: productId,
+            _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (response) {
+            console.log(response.message); // Show success message
+
+            // Update the cart count display
+            $('.ec-header-count.ec-cart-count.cart-count-lable').text(response.cartCount);
+
+            // Optionally remove the product from the cart list in the DOM
+            $(`.cart-item[data-product-id="${productId}"]`).remove();
+        },
+        error: function () {
+            alert('Failed to remove item from cart');
+        }
+    });
+}
+
+
 </script>
 
 </body>

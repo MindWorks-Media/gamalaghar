@@ -140,4 +140,75 @@ class CartController extends Controller
         $subtotal = $cart->price * $cart->quantity;
         return back()->with('success','Quantity Updated Successfully!');
     }
+
+
+    public function addToCart(Request $request)
+    {
+        $cart = session()->get('cart', []);
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity', 1);
+
+        if (isset($cart[$productId])) {
+            $cart[$productId]['quantity'] += $quantity;
+        } else {
+            $cart[$productId] = [
+                'product_id' => $productId,
+                'quantity' => $quantity,
+                'name' => $request->input('name'),
+                'price' => $request->input('price'),
+                'image_url' => $request->input('image_url')
+            ];
+        }
+
+        session()->put('cart', $cart);
+        $cartCount = array_sum(array_column($cart, 'quantity'));
+        return response()->json(['cart' => $cart, 'cartCount' => $cartCount, 'message' => 'Item added to cart']);
+    }
+
+    public function getCart()
+    {
+        $cart = session()->get('cart', []);
+        return response()->json(['cart' => $cart]);
+    }
+
+    public function updateCart(Request $request)
+    {
+        $cart = session()->get('cart', []);
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity');
+
+        if (isset($cart[$productId])) {
+            $cart[$productId]['quantity'] = $quantity;
+            session()->put('cart', $cart);
+            return response()->json(['cart' => $cart, 'message' => 'Cart updated']);
+        }
+
+        return response()->json(['message' => 'Item not found in cart'], 404);
+    }
+
+    public function deleteFromCart(Request $request)
+    {
+        $cart = session()->get('cart', []);
+        $productId = $request->input('product_id');
+    
+        if (isset($cart[$productId])) {
+            // Remove the item from the cart
+            unset($cart[$productId]);
+            
+            // Update the session with the new cart data
+            session()->put('cart', $cart);
+            
+            // Calculate the updated cart count
+            $cartCount = array_sum(array_column($cart, 'quantity'));
+    
+            return response()->json([
+                'cart' => $cart,
+                'cartCount' => $cartCount,
+                'message' => 'Item removed from cart successfully!'
+            ]);
+        }
+    
+        return response()->json(['message' => 'Item not found in cart'], 404);
+    }
+    
 }

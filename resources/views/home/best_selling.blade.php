@@ -66,7 +66,7 @@
                                             </div>
                                             <div class="ec-pro-content">
                                                 <span class="ec-price px-3 mb-3 " style="gap: 20px; margin-left:5px">
-                                                    <a href="#" class="add-to-cart-btn">Add
+                                                    <a href="#" class="add-to-cart-btn" data-product-id="{{$productData->id}}" data-name="{{$productData->product_name}}" data-price="{{ $productData->productsizeprice->first()->price }}" data-image-url="{{ $firstMedia->getUrl() }}">Add
                                                         to Cart</a>
                                                     <a href="{{ url('product/' . $productData->slug) }}"
                                                         class="buy-now-btn">Buy

@@ -234,6 +234,9 @@
                                     <div class="header-icon">
                                         <i class="fi-rr-shopping-basket"></i>
                                     </div>
+                                    <span class="ec-header-count ec-cart-count cart-count-lable instant-count">
+                                       
+                                    </span>
                                 @endif
                             </a>
                         </div>

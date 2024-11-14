@@ -1,7 +1,7 @@
 <!-- Ekka Cart Start -->
 <div class="ec-side-cart-overlay"></div>
 <div id="ec-side-cart" class="ec-side-cart">
-    @auth
+    {{-- @auth --}}
         <div class="ec-cart-inner">
             <div class="ec-cart-top">
                 <div class="ec-cart-title">
@@ -65,11 +65,11 @@
                 </div>
                 <div class="cart_btn">
                     <a href="{{ url('cart') }}" class="btn btn-primary">View Cart</a>
-                    <a href="{{ url('user/whole-checkout') }}" class="btn btn-secondary">Checkout</a>
+                    <a href="{{ url('user/whole-checkout') }}" class="btn btn-secondary" style="border: 1px solid black; color:black">Checkout</a>
                 </div>
             </div>
         </div>
-    @else
+    {{-- @else
         <div class="ec-cart-inner">
             <div class="ec-cart-top">
                 <div class="ec-cart-title">
@@ -79,6 +79,6 @@
                 <h2 class="text-center m-5">Kindly proceed with logging in to access the wishlist.</h2>
             </div>
         </div>
-    @endauth
+    @endauth --}}
 </div>
 <!-- Ekka Cart End -->
