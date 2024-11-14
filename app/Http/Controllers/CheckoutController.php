@@ -67,6 +67,7 @@ class CheckoutController extends Controller
         ->sum(DB::raw('product_size_prices.price * carts.quantity'));
         $paymentOptions=PaymentOption::get();
         $provinces=Province::all();
+        $areas = Area::all();
         return view('user.checkout', compact(
             'mainCategory',
             'countWishList',
@@ -79,7 +80,8 @@ class CheckoutController extends Controller
             'userDetails',
             'provinces',
             'sub_total',
-            'paymentOptions'
+            'paymentOptions',
+            'areas'
         ));
     }
 

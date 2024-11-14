@@ -36,21 +36,25 @@
                                     <span class="percentage">{{ $relatedProduct->discount }}%</span>
                                 </div>
                             </div>
+
+
                             <div class="ec-pro-content">
-                                <div class="ec-pro-title"><a
+                                <h5 class="ec-pro-title"><a
                                         href="{{ url('product/' . $relatedProduct->slug) }}">{{ $relatedProduct->product_name }}</a>
-                                </div>
-                                <div class="ec-pro-rating px-3">
+                                </h5>
+                                <div class="ec-pro-rating px-3" style="margin-left: 5px">
                                     <div class="average_user_rating"
-                                    lay-options="{value: {{ $averageRatingValues[$relatedProduct->id] ?? 0 }}, theme: '#FF8000'}">
+                                        lay-options="{value: {{ $averageRatingValues[$relatedProduct->id] ?? 0 }}, theme: '#FF8000'}">
+                                    </div>
+
                                 </div>
-                                </div>
-                                <span class="ec-price px-3 mb-3">
+                                <span class="ec-price px-3 mb-1" style="margin-left: 5px">
                                     @if ($relatedProduct->productsizeprice->isNotEmpty())
                                         <span class="new-price">Rs.
                                             {{ $relatedProduct->productsizeprice->first()->price }}</span>
                                     @endif
                                 </span>
+
                             </div>
                         </a>
                     </div>

@@ -65,18 +65,19 @@
 
                                             </div>
                                             <div class="ec-pro-content">
-                                                <span class="ec-price px-4 mb-3 " style="gap: 20px">
-                                                    <a href=""
-                                                        style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">Add
+                                                <span class="ec-price px-3 mb-3 " style="gap: 20px; margin-left:5px">
+                                                    <a href="#" class="add-to-cart-btn">Add
                                                         to Cart</a>
                                                     <a href="{{ url('product/' . $productData->slug) }}"
-                                                        style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">Buy
+                                                        class="buy-now-btn">Buy
                                                         Now</a>
                                                 </span>
                                             </div>
                                         </a>
-                                        <span class="wish-icon"><i class="fi-rr-heart"
-                                                style="font-size: 25px"></i></span>
+                                        @auth
+                                            <span class="wish-icon"><i class="fi-rr-heart"
+                                                    style="font-size: 25px"></i></span>
+                                        @endauth
                                     </div>
 
                                 </div>
@@ -188,9 +189,9 @@
                                                 </span>
                                             </div>
                                             <div class="ec-pro-content">
-                                                <span class="ec-price px-4 mb-3 " style="gap: 20px">
+                                                <span class="ec-price px-3 mb-3 " style="gap: 20px; margin-left:5px">
                                                     <a href="{{ url('products/' . $subcat->slug) }}"
-                                                        style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">View
+                                                        class="add-to-cart-btn">View
                                                         Products</a>
                                                 </span>
                                             </div>

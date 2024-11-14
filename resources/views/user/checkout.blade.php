@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="ec-checkout-leftside col-lg-8 col-md-12">
                     <!-- Checkout content Start -->
-                    <div class="ec-checkout-content" style="padding: 10px 20px; border:1px solid #e5e7eb ">
+                    <div class="ec-checkout-content" style="padding: 10px 20px; border-right:1px solid #e5e7eb ">
                         <div class="ec-checkout-inner">
                             <div class="ec-checkout-wrap padding-bottom-3">
                                 <div class="ec-checkout-block ec-check-bill">
@@ -109,25 +109,25 @@
                                                 order.
                                             </div>
                                             {{-- <form action="#"> --}}
-                                                <span class="ec-pay-option">
-                                                    @forelse ($paymentOptions as $paymentOption)
-                                                        <span>
-                                                            <input type="radio" id="pay1" name="payment_option"
-                                                                class="form-check-input" checked
-                                                                value="{{ $paymentOption->id }}">
-                                                            <label
-                                                                for="pay1">{{ $paymentOption->payment_name }}</label>
-                                                        </span>
-                                                        @error('payment_option')
-                                                            <p class="text-danger">{{ $message }}</p>
-                                                        @enderror
-                                                    @empty
-                                                    @endforelse
-                                                </span>
-                                                <div class="ec-pay-commemt">
-                                                    <span class="ec-pay-opt-head">Add Comments About Your Order</span>
-                                                    <textarea style="height: unset;" rows="2" name="comment" placeholder="Comments"></textarea>
-                                                </div>
+                                            <span class="ec-pay-option">
+                                                @forelse ($paymentOptions as $paymentOption)
+                                                    <span>
+                                                        <input type="radio" id="pay1" name="payment_option"
+                                                            class="form-check-input" checked
+                                                            value="{{ $paymentOption->id }}">
+                                                        <label
+                                                            for="pay1">{{ $paymentOption->payment_name }}</label>
+                                                    </span>
+                                                    @error('payment_option')
+                                                        <p class="text-danger">{{ $message }}</p>
+                                                    @enderror
+                                                @empty
+                                                @endforelse
+                                            </span>
+                                            <div class="ec-pay-commemt">
+                                                <span class="ec-pay-opt-head">Add Comments About Your Order</span>
+                                                <textarea style="height: unset;" rows="2" name="comment" placeholder="Comments"></textarea>
+                                            </div>
                                             {{-- </form> --}}
                                         </div>
                                     </div>
@@ -138,7 +138,8 @@
                             <div class="ec-check-order-btn">
                                 <input type="hidden" id="subTotal" name="sub_total" value="{{ $sub_total }}">
                                 <input type="hidden" id="deliveryCharge" name="delivery_charge" value="100">
-                                <input type="hidden" id="totalAmount" name="total_amount" value="{{ $sub_total + 100 }}">
+                                <input type="hidden" id="totalAmount" name="total_amount"
+                                    value="{{ $sub_total + 100 }}">
                                 <button type="submit" class="btn btn-primary">Place Order</button>
                             </div>
                         </div>
@@ -149,7 +150,7 @@
                 <div class="ec-checkout-rightside col-lg-4 col-md-12">
                     <div class="ec-sidebar-wrap">
                         <!-- Sidebar Summary Block -->
-                        <div class="ec-sidebar-block">
+                        <div class="ec-sidebar-block" style="background: #fafafa">
                             <div class="ec-sb-title">
                                 <h3 class="ec-sidebar-title">Summary</h3>
                             </div>
@@ -157,7 +158,8 @@
                                 <div class="ec-checkout-summary">
                                     <div>
                                         <span class="text-left">Sub-Total</span>
-                                        <span class="text-right"><span id="sub_Total">{{ $sub_total }}</span></span>
+                                        <span class="text-right"><span
+                                                id="sub_Total">{{ $sub_total }}</span></span>
                                     </div>
                                     <div>
                                         <span class="text-left">Delivery Charges</span>
@@ -172,7 +174,8 @@
                                 <div class="ec-checkout-pro">
                                     @foreach ($selectedProducts as $products)
                                         <div class="col-sm-12 mb-6">
-                                            <div class="ec-product-inner">
+                                            <div class="ec-product-inner"
+                                                style="border-radius:0px;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px">
                                                 <div class="ec-pro-image-outer mb-2">
                                                     <div class="ec-pro-image p-2">
                                                         <a href="product-left-sidebar.html" class="image">
