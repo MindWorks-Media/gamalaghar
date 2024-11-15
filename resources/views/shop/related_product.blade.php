@@ -33,7 +33,9 @@
                                                 alt="Product" />
                                         @endif
                                     </div>
-                                    <span class="percentage">{{ $relatedProduct->discount }}%</span>
+                                    @if ($relatedProduct->discount != null)
+                                        <span class="percentage">{{ $relatedProduct->discount }}%</span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="ec-pro-content">
@@ -45,12 +47,20 @@
                                         lay-options="{value: {{ $averageRatingValue }}, theme: '#FF8000'}">
                                     </div>
                                 </div>
-                                <span class="ec-price px-3 mb-3">
+                                <span class="ec-price px-3 mb-1" style="margin-left: 5px">
                                     @if ($relatedProduct->productsizeprice->isNotEmpty())
                                         <span class="new-price">Rs.
                                             {{ $relatedProduct->productsizeprice->first()->price }}</span>
                                     @endif
                                 </span>
+                                <div class="ec-pro-content">
+                                    <span class="ec-price px-3 mb-3 " style="gap: 20px; margin-left:5px">
+                                        <a href="#" class="add-to-cart-btn">Add
+                                            to Cart</a>
+                                        <a href="{{ url('product/' . $relatedProduct->slug) }}" class="buy-now-btn">Buy
+                                            Now</a>
+                                    </span>
+                                </div>
                             </div>
                         </a>
                     </div>

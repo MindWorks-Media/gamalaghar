@@ -115,7 +115,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ec-single-qty">
+                                <div class="ec-single-qty" style="border-bottom: none">
                                     <form action="{{ url('cart') }}" method="POST" class="unique-cart-form">
                                         @csrf
                                         <div class="qty-plus-minus">
@@ -142,9 +142,12 @@
                                             </button>
                                         </form>
                                     </div>
-
                                 </div>
-                                <div class="ec-single-social">
+                                <div class="ec-single-qty">
+                                    <button id="cart" class="btn btn-primary" style="width: 47%">Buy
+                                        Now</button>
+                                </div>
+                                <div class="ec-single-social mt-2">
                                     <ul class="mb-0">
                                         <li class="list-inline-item facebook"><a
                                                 href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}"
@@ -152,6 +155,12 @@
                                         <li class="list-inline-item twitter"><a
                                                 href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&media={{ $product->getFirstMediaUrl('product_image') }}"
                                                 target="_blank"><i class="ecicon eci-twitter"></i></a></li>
+                                        <li class="list-inline-item instagram"><a
+                                                href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&media={{ $product->getFirstMediaUrl('product_image') }}"
+                                                target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                                        <li class="list-inline-item twitter"><a
+                                                href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&media={{ $product->getFirstMediaUrl('product_image') }}"
+                                                target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

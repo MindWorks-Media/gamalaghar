@@ -102,7 +102,9 @@
                                                             src="{{ $productData->getFirstMediaUrl('product_image') }}"
                                                             alt="Product" />
                                                     @endif
-                                                    <span class="percentage">{{ $productData->discount }}%</span>
+                                                    @if ($productData->discount != null)
+                                                        <span class="percentage">{{ $productData->discount }}%</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="ec-pro-content">
@@ -110,12 +112,12 @@
                                                     <a
                                                         href="{{ url('product/' . $productData->slug) }}">{{ $productData->product_name }}</a>
                                                 </div>
-                                                <div class="ec-pro-rating px-3" style="margin-left: 5px">
+                                                {{-- <div class="ec-pro-rating px-3" style="margin-left: 5px">
                                                     @for ($i = 0; $i < 4; $i++)
                                                         <i class="ecicon eci-star fill"></i>
                                                     @endfor
                                                     <i class="ecicon eci-star"></i>
-                                                </div>
+                                                </div> --}}
                                                 <span class="ec-price px-3 mb-1" style="margin-left: 5px">
                                                     @if ($productData->productsizeprice->isNotEmpty())
                                                         <span class="new-price">Rs.
