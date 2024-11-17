@@ -78,6 +78,36 @@
 @include('home.bottom_banner')
 @include('layout.footer')
 @livewireScripts
+{{-- <script>
+       document.addEventListener('DOMContentLoaded', function() {
+        const zoomElements = document.querySelectorAll('.carousel-item'); // Target each carousel item
+
+        zoomElements.forEach(element => {
+            element.addEventListener('mousemove', function(e) {
+                const img = this.querySelector(
+                    'img'); // Select the image within the carousel item
+                const rect = img.getBoundingClientRect(); // Get the image's bounding box
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const width = rect.width;
+                const height = rect.height;
+
+                // Calculate percentages for zoom effect
+                const xPercent = (x / width) * 100;
+                const yPercent = (y / height) * 100;
+
+                // Apply calculated percentages as transform-origin to the image
+                img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+            });
+
+            // Reset transform-origin when mouse leaves the image area
+            element.addEventListener('mouseleave', function() {
+                const img = this.querySelector('img');
+                img.style.transformOrigin = 'center center'; // Reset to center
+            });
+        });
+    });
+</script> --}}
 </body>
 
 </html>

@@ -94,7 +94,7 @@ class ProductController extends Controller
         $activeSizePrice = $product->productsizeprice->where('size_id', $size->first()->id)->first()->price;
 
         $bestSellingProducts = Product::with('media', 'productImages')->with('productsizeprice')->take(6)->get();
-        $relatedProducts = Product::with('media', 'productImages')->with('productsizeprice')->take(4)->get();
+        $relatedProducts = Product::select('id','slug','product_name','product_price','discount')->with('media', 'productImages')->with('productsizeprice')->take(4)->get();
         $productID=Product::where('slug',$slug)->first();
         $userReviews=UserReview::join('users', 'users.id','=', 'user_reviews.user_id')
         ->where('user_reviews.product_id', $productID->id)->get();

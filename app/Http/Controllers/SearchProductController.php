@@ -32,7 +32,7 @@ class SearchProductController extends Controller
         } elseif ($position == "high-to-low") {
             $query->orderBy('product_price', 'desc');
         }
-        $resultedProducts = $query->paginate(9);
+        $resultedProducts = $query->orderBy('product_price','ASC')->paginate(9);
         $mainCategory = MainCategory::with('subcategories')->get();
         // $product = Product::with(['media', 'productImages','productsizeprice'])->latest()->get();
         // $productSizePrice=ProductSizePrice::where('')

@@ -123,6 +123,7 @@
                                                     @endif
                                                 </li>
                                             @endforeach
+                                            <li><a href="{{ url('/') }}" class="text-danger">Sale</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -190,6 +191,7 @@
                                 @endif
                             @endforeach
                         </ul>
+                        
                     </div>
                     <!-- Header cat End -->
 
