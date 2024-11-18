@@ -1,7 +1,7 @@
 @include('layout.header')
 @include('layout.nav')
 <!-- Ec Wishlist page -->
-<section class="ec-page-content section-space-p">
+<section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
     <div class="container">
         <div class="row">
             <!-- Sidebar Area Start -->

@@ -215,7 +215,7 @@
                             <a href="{{ url('wishlist') }}" class="ec-header-btn ec-header-wishlist">
                                 @if ($countWishList)
                                     <div class="header-icon"><i class="fi-rr-heart"></i></div>
-                                    <span class="ec-header-count">
+                                    <span class="ec-header-count wish-count">
                                         {{ $countWishList }}
                                     </span>
                                 @else

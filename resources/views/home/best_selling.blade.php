@@ -15,9 +15,9 @@
                 <!-- Compare content Start -->
                 <div class="ec-compare-content">
                     <div class="ec-compare-inner">
-                        <div class="row margin-minus-b-30">
+                        <div class="row margin-minus-b-30 product-grid">
                             @foreach ($feauturedProducts as $productData)
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-6 pro-gl-content">
                                     <div class="ec-product-inner">
                                         <a href="{{ url('product/' . $productData->slug) }}">
                                             <div class="ec-pro-image-outer">
@@ -65,21 +65,26 @@
 
                                             </div>
                                             <div class="ec-pro-content">
-                                                <span class="ec-price px-3 mb-3 " style="gap: 20px; margin-left:5px">
-                                                    <a href="#" class="add-to-cart-btn" data-product-id="{{$productData->id}}" data-name="{{$productData->product_name}}" data-price="{{ $productData->productsizeprice->first()->price }}" data-image-url="{{ $firstMedia->getUrl() }}">Add
+                                                <span class="ec-price px-3 mb-3 " style="gap: 15px; margin-left:5px">
+                                                    <a href="#" class="add-to-cart-btn w-100 text-center" data-product-id="{{$productData->id}}" data-name="{{$productData->product_name}}" data-price="{{ $productData->productsizeprice->first()->price }}" data-image-url="{{ $firstMedia->getUrl() }}">Add
                                                         to Cart</a>
                                                     <a href="{{ url('product/' . $productData->slug) }}"
-                                                        class="buy-now-btn">Buy
+                                                        class="buy-now-btn w-100 text-center">Buy
                                                         Now</a>
                                                 </span>
                                             </div>
                                         </a>
+                                       
                                         @auth
-                                            <span class="wish-icon"><i class="fi-rr-heart"
+                                        @php
+                                        $isInWishlist = \App\Models\Wishlist::where('user_id', auth()->id())
+                                            ->where('product_id', $productData->id)
+                                            ->exists();
+                                         @endphp
+                                            <span class="wish-icon {{ $isInWishlist ? 'glow' : '' }}" data-product-id="{{ $productData->id }}"><i class="fi-rr-heart"
                                                     style="font-size: 25px"></i></span>
                                         @endauth
                                     </div>
-
                                 </div>
                             @endforeach
                         </div>

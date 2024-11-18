@@ -368,6 +368,35 @@ function removeFromCart(productId) {
 }
 
 
+
+$(document).on('click', '.wish-icon', function () {
+    let productId = $(this).data('product-id'); // Get product ID from data attribute
+    let icon = $(this); // Reference the clicked element
+
+    $.ajax({
+        url: "{{ route('wishlist.toggle') }}", // Laravel route for wishlist toggle
+        type: "POST",
+        data: {
+            product_id: productId, // Send product ID
+            _token: "{{ csrf_token() }}" // CSRF token for security
+        },
+        success: function (response) {
+            if (response.status === 'added') {
+                icon.addClass('glow');
+                console.log('glow added successfully');
+            } else if (response.status === 'removed') {
+                icon.removeClass('glow'); // Remove the 'glow' class dynamically
+            }
+
+            $('.ec-header-count.wish-count').text(response.count);
+        },
+        error: function (xhr) {
+            console.error('Error:', xhr.responseText);
+        }
+    });
+});
+
+
 </script>
 
 </body>

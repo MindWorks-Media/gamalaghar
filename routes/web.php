@@ -49,6 +49,7 @@ Route::post('logout', [LoginController::class, 'logout']);
 
 Route::get('/', [HomeController::class, 'index']);
 
+Route::get('products',[ProductController::class,'product'])->name('products');
 Route::get('products/{slug}', [ProductController::class, 'showProduct']);
 Route::get('product/{slug}', [ProductController::class, 'showSingleProduct']);
 
@@ -106,6 +107,9 @@ Route::post('newsletter', [NewsLetterController::class, 'store']);
 
 Route::post('user-review',[UserReviewController::class,'store']);
 
+
+// wishlist isntantly added route
+Route::post('/wishlist/toggle', [WishlistController::class, 'wishlist_toggle'])->name('wishlist.toggle');
 
 
 // cart

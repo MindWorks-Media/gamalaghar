@@ -139,4 +139,60 @@ class WishlistController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+// instantly add product to wish list
+//     public function wishlist_toggle(Request $request)
+// {
+//     $request->validate([
+//         'product_id' => 'required|exists:products,id',
+//     ]);
+
+//     $wishlist = Wishlist::where('user_id', auth()->id())
+//                         ->where('product_id', $request->product_id)
+//                         ->first();
+
+//     if ($wishlist) {
+//         $wishlist->delete();
+//         return response()->json(['status' => 'removed']);
+//     } else {
+//         Wishlist::create([
+//             'user_id' => auth()->id(),
+//             'product_id' => $request->product_id,
+//         ]);
+//         return response()->json(['status' => 'added']);
+//     }
+// }
+
+
+public function wishlist_toggle(Request $request)
+{
+    $request->validate([
+        'product_id' => 'required|exists:products,id',
+    ]);
+
+    $wishlist = Wishlist::where('user_id', auth()->id())
+                        ->where('product_id', $request->product_id)
+                        ->first();
+
+    if ($wishlist) {
+        $wishlist->delete();
+        $status = 'removed';
+    } else {
+        Wishlist::create([
+            'user_id' => auth()->id(),
+            'product_id' => $request->product_id,
+        ]);
+        $status = 'added';
+    }
+
+    // Return the new wishlist count
+    $count = Wishlist::where('user_id', auth()->id())->count();
+
+    return response()->json([
+        'status' => $status,
+        'count' => $count,
+    ]);
+}
+
+
 }

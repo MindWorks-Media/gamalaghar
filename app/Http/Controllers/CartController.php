@@ -210,5 +210,38 @@ class CartController extends Controller
     
         return response()->json(['message' => 'Item not found in cart'], 404);
     }
+
+
+
+    // isntantly add to cart after 
+    public function wishlist_toggle(Request $request)
+{
+    $request->validate([
+        'product_id' => 'required|exists:products,id',
+    ]);
+
+    $wishlist = Wishlist::where('user_id', auth()->id())
+                        ->where('product_id', $request->product_id)
+                        ->first();
+
+    if ($wishlist) {
+        $wishlist->delete();
+        $status = 'removed';
+    } else {
+        Wishlist::create([
+            'user_id' => auth()->id(),
+            'product_id' => $request->product_id,
+        ]);
+        $status = 'added';
+    }
+
+    // Return the new wishlist count
+    $count = Wishlist::where('user_id', auth()->id())->count();
+
+    return response()->json([
+        'status' => $status,
+        'count' => $count,
+    ]);
+}
     
 }

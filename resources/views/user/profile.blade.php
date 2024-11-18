@@ -12,10 +12,10 @@
                         <div class="ec-vendor-block">
                             <div class="ec-vendor-block-items">
                                 <ul>
-                                    <li><a href="{{ route('user.profile') }}" style="color: white">User Profile</a></li>
-                                    <li><a href="{{ url('user/history') }}" style="color: white">Order History</a></li>
-                                    <li><a href="{{ url('wishlist') }}" style="color: white">Wishlist</a></li>
-                                    <li><a href="{{ url('cart') }}" style="color: white">Cart</a></li>
+                                    <li><a href="{{ route('user.profile') }}">User Profile</a></li>
+                                    <li><a href="{{ url('user/history') }}" >Order History</a></li>
+                                    <li><a href="{{ url('wishlist') }}" >Wishlist</a></li>
+                                    <li><a href="{{ url('cart') }}" >Cart</a></li>
                                 </ul>
                             </div>
                         </div>

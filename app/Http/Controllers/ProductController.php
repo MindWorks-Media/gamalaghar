@@ -16,6 +16,31 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
 
+    public function product()
+    {
+        $mainCategory = MainCategory::with('subcategories')->get();
+        $all_products = Product::with(['media', 'productsizeprice', 'productImages'])->orderBy('id','DESC')->paginate(12);
+
+        if (auth()->check()) {
+            $countWishList = Wishlist::where('user_id', auth()->user()->id)->count();
+            $countCarts = Cart::where('user_id', auth()->user()->id)->count();
+            $cart = Cart::join('products', 'products.id', '=', 'carts.product_id')
+                ->join('product_size_prices', 'product_size_prices.id', '=', 'carts.product_size_price_id')
+                ->join('sizes', 'sizes.id', '=', 'product_size_prices.size_id')
+                ->select('products.id', 'products.product_name', 'products.slug', 'product_size_prices.price', 'sizes.size', 'carts.quantity', 'carts.id as cartid', 'carts.user_id')
+                ->groupBy('cartid', 'products.id', 'products.product_name', 'products.slug', 'product_size_prices.price', 'sizes.size', 'carts.quantity', 'carts.user_id')
+                ->where('carts.user_id', auth()->user()->id)->get();
+            $productId = $cart->pluck('id')->toArray();
+            $cartproductImages = Product::with('media')->whereIn('id', $productId)->get();
+        } else {
+            $countWishList = "";
+            $countCarts = "";
+            $cart = [];
+            $cartproductImages = [];
+        }
+        return view('shop.productarchive',compact('all_products','mainCategory', 'countWishList', 'cart', 'cartproductImages', 'countCarts'));
+    }
+
     public function showProduct(Request $request, $slug)
     {
         $mainCategory = MainCategory::with('subcategories')->get();
