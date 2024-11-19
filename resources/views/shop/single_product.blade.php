@@ -82,6 +82,7 @@
                                     </div>
                                 </div>
                                 <div class="ec-single-desc">{{ strip_tags($product->short_description) }}</div>
+                                <div class="ec-single-desc">The Peace Lily is as graceful as it is useful... It helps purify the air while its white bracts add just the right touch of simple beauty & positive energy to a space! Available in two sizes and in your choice of container. Plant Perk: The more soil surface area, the better this plant is at capturing toxins and purifying the air. So, keep those lower leaves trimmed!</div>
                                 <div class="ec-single-price-stoke">
                                     <div class="ec-single-price">
                                         <span class="ec-single-ps-title">As low as</span>

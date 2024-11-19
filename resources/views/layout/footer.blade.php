@@ -1,6 +1,7 @@
 <!-- Footer Section Start -->
 <footer class="section ec-footer-sec">
-    <div class="footer-container ec-footer">
+    <div class="footer-container ec-footer" style="
+    background: #deffb8">
         <div class="footer-top section-space-footer">
             <div class="container">
                 <div class="row">
@@ -310,8 +311,9 @@ function addToCart(productId, name, price, imageUrl) {
         success: function (response) {
             console.log(response.message); // Show success message
             updateCartDisplay(response.cart); // Update cart display instantly
-
+            $('.instant-count').show();
             $('.ec-header-count.ec-cart-count.cart-count-lable.instant-count').text(response.cartCount);
+            $('#total-price').text(response.totalPrice.toFixed(2));
         },
         error: function () {
             alert('Failed to add item to cart');
@@ -366,6 +368,9 @@ function removeFromCart(productId) {
         }
     });
 }
+$(document).ready(function(){
+     $('.instant-count').hide();
+});
 
 
 

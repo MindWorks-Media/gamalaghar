@@ -1,10 +1,9 @@
 <!-- Header start  -->
 <header class="ec-header">
     <!--Ec Header Top Start -->
-    <div class="header-top">
+    <div class="header-top" style="background: #692d8e;color: white;">
         <div class="container">
             <div class="row align-items-center">
-
                 <!-- Header Top Message Start -->
                 <div class="col text-center header-top-center">
                     <div class="header-top-message">
@@ -12,11 +11,20 @@
                     </div>
                 </div>
                 <!-- Header Top Message End -->
+                <div class="col-md-6 text-center " style="color: white;  margin-top: 5px;">
+                    <div class="redbg">
+                            <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                                <span>
+                                    <a href="/" title="This is me"> This is me and my one and only top sale or notice bar</a>
+                                </span>
+                            </marquee>
+                    </div>
+                </div>
                 <!-- Header Top Language Currency -->
                 <div class="col header-top-right d-none d-lg-block">
                     <div class="header-top-lan-curr d-flex justify-content-end">
                         <!-- Phone Number   -->
-                        <div class="header-top-message"><i class='bx bxs-phone' style='color:#692c91'></i> 9801890046
+                        <div class="header-top-message"><i class='bx bxs-phone'></i> 9801890046
                         </div>
                     </div>
                 </div>
@@ -49,18 +57,20 @@
                         </div>
                         <!-- Header User End -->
                         <!-- Header Cart Start -->
-                        <a href="{{ url('wishlist') }}" class="ec-header-btn ec-header-wishlist">
-                            <div class="header-icon">
-                                @if ($countWishList)
-                                    <i class="fi-rr-heart"></i>
-                                    <span class="ec-header-count">
-                                        {{ $countWishList }}
-                                    </span>
-                                @else
-                                    <i class="fi-rr-heart"></i>
-                                @endif
-                            </div>
-                        </a>
+                       @auth
+                       <a href="{{ url('wishlist') }}" class="ec-header-btn ec-header-wishlist">
+                        <div class="header-icon">
+                            @if ($countWishList)
+                                <i class="fi-rr-heart"></i>
+                                <span class="ec-header-count">
+                                    {{ $countWishList }}
+                                </span>
+                            @else
+                                <i class="fi-rr-heart"></i>
+                            @endif
+                        </div>
+                    </a>
+                       @endauth
                         <!-- Header Cart Start -->
                         <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
                             <div class="header-icon">
@@ -212,6 +222,7 @@
                     <div class="align-self-center">
                         <div class="ec-header-bottons">
                             <!-- Header wishlist Start -->
+                            @auth
                             <a href="{{ url('wishlist') }}" class="ec-header-btn ec-header-wishlist">
                                 @if ($countWishList)
                                     <div class="header-icon"><i class="fi-rr-heart"></i></div>
@@ -222,6 +233,7 @@
                                     <div class="header-icon"><i class="fi-rr-heart"></i></div>
                                 @endif
                             </a>
+                            @endauth
                             <!-- Header wishlist End -->
                             <!-- Header Cart Start -->
                             <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">

@@ -141,7 +141,7 @@ class CartController extends Controller
         return back()->with('success','Quantity Updated Successfully!');
     }
 
-
+// isntant show in my cart
     public function addToCart(Request $request)
     {
         $cart = session()->get('cart', []);
@@ -162,7 +162,11 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
         $cartCount = array_sum(array_column($cart, 'quantity'));
-        return response()->json(['cart' => $cart, 'cartCount' => $cartCount, 'message' => 'Item added to cart']);
+        $totalPrice = array_reduce($cart, function ($total, $item) {
+            return $total + ($item['price'] * $item['quantity']);
+        }, 0);
+
+        return response()->json(['cart' => $cart, 'cartCount' => $cartCount,'totalPrice' => $totalPrice, 'message' => 'Item added to cart']);
     }
 
     public function getCart()

@@ -88,6 +88,11 @@
                                 </div>
                             @endforeach
                         </div>
+                        <div class="row mt-5 d-flex align-items-center justify-content-center">
+                            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                <a href="{{route('products')}}" class="btn btn-primary w-25">View All</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!--compare content End -->

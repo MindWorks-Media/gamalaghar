@@ -10,7 +10,6 @@
                 </div>
 
                 <ul class="eccart-pro-items">
-
                     @forelse ($cart as $cartData)
                         <li>
                             <div class="sidecart_pro_img">
@@ -63,10 +62,16 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="cart_btn">
+               @auth
+               <div class="cart_btn">
                     <a href="{{ url('cart') }}" class="btn btn-primary">View Cart</a>
                     <a href="{{ url('user/whole-checkout') }}" class="btn btn-secondary" style="border: 1px solid black; color:black">Checkout</a>
                 </div>
+                @else
+                   <div class="cart_btn">
+                    <a href="{{ route('login') }}" class="btn btn-secondary w-100" style="border: 1px solid black; color:black">Checkout</a>
+                </div>
+               @endauth
             </div>
         </div>
     {{-- @else
