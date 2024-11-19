@@ -194,30 +194,30 @@ class CartController extends Controller
     {
         $cart = session()->get('cart', []);
         $productId = $request->input('product_id');
-    
+
         if (isset($cart[$productId])) {
             // Remove the item from the cart
             unset($cart[$productId]);
-            
+
             // Update the session with the new cart data
             session()->put('cart', $cart);
-            
+
             // Calculate the updated cart count
             $cartCount = array_sum(array_column($cart, 'quantity'));
-    
+
             return response()->json([
                 'cart' => $cart,
                 'cartCount' => $cartCount,
                 'message' => 'Item removed from cart successfully!'
             ]);
         }
-    
+
         return response()->json(['message' => 'Item not found in cart'], 404);
     }
 
 
 
-    // isntantly add to cart after 
+    // isntantly add to cart after
     public function wishlist_toggle(Request $request)
 {
     $request->validate([
@@ -247,5 +247,5 @@ class CartController extends Controller
         'count' => $count,
     ]);
 }
-    
+
 }

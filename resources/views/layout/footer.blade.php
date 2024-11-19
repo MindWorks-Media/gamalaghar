@@ -46,7 +46,7 @@
                             <div class="ec-footer-links ec-footer-dropdown">
                                 <ul class="align-items-center">
                                     <li class="ec-footer-link"><a href="{{ url('about-us') }}">About Us</a></li>
-                                    <li class="ec-footer-link"><a href="#">Blog</a></li>
+                                    <li class="ec-footer-link"><a href="{{ route('blog') }}">Blog</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -280,54 +280,83 @@
 
 
 
-    $(document).ready(function () {
-    // Listen for clicks on elements with the 'add-to-cart-btn' class
-    $('.add-to-cart-btn').on('click', function (e) {
-        e.preventDefault(); // Prevent the default link behavior
+    $(document).ready(function() {
+        fetchCartData();
+        // Listen for clicks on elements with the 'add-to-cart-btn' class
+        $('.add-to-cart-btn').on('click', function(e) {
+            e.preventDefault(); // Prevent the default link behavior
 
-        // Get product details from data attributes
-        const productId = $(this).data('product-id');
-        const name = $(this).data('name');
-        const price = $(this).data('price');
-        const imageUrl = $(this).data('image-url'); // Assuming you add a data attribute for the image URL
+            // Get product details from data attributes
+            const productId = $(this).data('product-id');
+            const name = $(this).data('name');
+            const price = $(this).data('price');
+            const imageUrl = $(this).data(
+                'image-url'); // Assuming you add a data attribute for the image URL
 
-        // Call the addToCart function with the product details
-        addToCart(productId, name, price, imageUrl);
+            // Call the addToCart function with the product details
+            addToCart(productId, name, price, imageUrl);
+        });
     });
-});
 
-function addToCart(productId, name, price, imageUrl) {
-    $.ajax({
-        url: '/add-to-cart',
-        type: 'POST',
-        data: {
-            product_id: productId,
-            name: name,
-            price: price,
-            quantity: 1,
-            image_url: imageUrl, // Send image URL if available
-            _token: $('meta[name="csrf-token"]').attr('content') // Include CSRF token for security
-        },
-        success: function (response) {
-            console.log(response.message); // Show success message
-            updateCartDisplay(response.cart); // Update cart display instantly
-            $('.instant-count').show();
-            $('.ec-header-count.ec-cart-count.cart-count-lable.instant-count').text(response.cartCount);
-            $('#total-price').text(response.totalPrice.toFixed(2));
-        },
-        error: function () {
-            alert('Failed to add item to cart');
-        }
-    });
-}
+    function addToCart(productId, name, price, imageUrl) {
+        $.ajax({
+            url: '/add-to-cart',
+            type: 'POST',
+            data: {
+                product_id: productId,
+                name: name,
+                price: price,
+                quantity: 1,
+                image_url: imageUrl, // Send image URL if available
+                _token: $('meta[name="csrf-token"]').attr('content') // Include CSRF token for security
+            },
+            success: function(response) {
+                console.log(response.message); // Show success message
+                updateCartDisplay(response.cart); // Update cart display instantly
+                $('.instant-count').show();
+                $('.ec-header-count.ec-cart-count.cart-count-lable.instant-count').text(response.cartCount);
+                $('#total-price').text(response.totalPrice.toFixed(2));
+            },
+            error: function() {
+                alert('Failed to add item to cart');
+            }
+        });
+    }
 
-function updateCartDisplay(cart) {
-    let cartContainer = $('.eccart-pro-items');
-    cartContainer.empty(); // Clear existing cart items
+    function fetchCartData() {
+        $.ajax({
+            url: '/get-cart',
+            type: 'GET',
+            success: function(response) {
+                updateCartDisplay(response.cart);
+                $('.instant-count').show();
+                $('.ec-header-count.ec-cart-count.cart-count-lable').text(Object.keys(response.cart)
+                    .length);
+                $('#total-price').text(
+                    Object.values(response.cart).reduce(
+                        (total, item) => total + item.price * item.quantity,
+                        0
+                    ).toFixed(2)
+                );
+            },
+            error: function() {
+                console.log('Failed to fetch cart data');
+            }
+        });
+    }
 
-    // Loop through each item in the cart and create an HTML structure for it
-    $.each(cart, function (index, item) {
-        cartContainer.append(`
+    function updateCartDisplay(cart) {
+        let cartContainer = $('.eccart-pro-items');
+        cartContainer.empty();
+
+        let totalPrice = 0;
+        let totalCount = 0;
+
+        $.each(cart, function(index, item) {
+            totalPrice += item.price * item.quantity;
+            totalCount += item.quantity;
+
+            cartContainer.append(`
             <li>
                 <div class="sidecart_pro_img">
                     <img src="${item.image_url}" class="main-image">
@@ -335,73 +364,72 @@ function updateCartDisplay(cart) {
                 <div class="ec-pro-content">
                     <a href="single-product-left-sidebar.html" class="cart_pro_title">${item.name}</a>
                     <span class="cart-price">Rs. ${item.price} x <span class="qty-input">${item.quantity}</span></span>
-                    <div class="ec-pro-variation-inner ec-pro-variation-size">
-                        <span>SIZE: Small</span> <!-- Customize this if size is dynamic -->
-                    </div>
                     <a href="#" class="remove" onclick="removeFromCart(${item.product_id})">×</a>
                 </div>
             </li>
         `);
-    });
-}
+        });
 
-
-function removeFromCart(productId) {
-    $.ajax({
-        url: '/delete-from-cart',
-        type: 'POST',
-        data: {
-            product_id: productId,
-            _token: $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function (response) {
-            console.log(response.message); // Show success message
-
-            // Update the cart count display
-            $('.ec-header-count.ec-cart-count.cart-count-lable').text(response.cartCount);
-
-            // Optionally remove the product from the cart list in the DOM
-            $(`.cart-item[data-product-id="${productId}"]`).remove();
-        },
-        error: function () {
-            alert('Failed to remove item from cart');
-        }
-    });
-}
-$(document).ready(function(){
-     $('.instant-count').hide();
-});
+        $('.instant-count').text(totalCount);
+        $('#total-price').text(totalPrice.toFixed(2));
+    }
 
 
 
-$(document).on('click', '.wish-icon', function () {
-    let productId = $(this).data('product-id'); // Get product ID from data attribute
-    let icon = $(this); // Reference the clicked element
+    function removeFromCart(productId) {
+        $.ajax({
+            url: '/delete-from-cart',
+            type: 'POST',
+            data: {
+                product_id: productId,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                console.log(response.message); // Show success message
 
-    $.ajax({
-        url: "{{ route('wishlist.toggle') }}", // Laravel route for wishlist toggle
-        type: "POST",
-        data: {
-            product_id: productId, // Send product ID
-            _token: "{{ csrf_token() }}" // CSRF token for security
-        },
-        success: function (response) {
-            if (response.status === 'added') {
-                icon.addClass('glow');
-                console.log('glow added successfully');
-            } else if (response.status === 'removed') {
-                icon.removeClass('glow'); // Remove the 'glow' class dynamically
+                // Update the cart count display
+                $('.ec-header-count.ec-cart-count.cart-count-lable').text(response.cartCount);
+
+                // Optionally remove the product from the cart list in the DOM
+                $(`.cart-item[data-product-id="${productId}"]`).remove();
+            },
+            error: function() {
+                alert('Failed to remove item from cart');
             }
+        });
+    }
+    // $(document).ready(function(){
+    //      $('.instant-count').hide();
+    // });
 
-            $('.ec-header-count.wish-count').text(response.count);
-        },
-        error: function (xhr) {
-            console.error('Error:', xhr.responseText);
-        }
+
+
+    $(document).on('click', '.wish-icon', function() {
+        let productId = $(this).data('product-id'); // Get product ID from data attribute
+        let icon = $(this); // Reference the clicked element
+
+        $.ajax({
+            url: "{{ route('wishlist.toggle') }}", // Laravel route for wishlist toggle
+            type: "POST",
+            data: {
+                product_id: productId, // Send product ID
+                _token: "{{ csrf_token() }}" // CSRF token for security
+            },
+            success: function(response) {
+                if (response.status === 'added') {
+                    icon.addClass('glow');
+                    console.log('glow added successfully');
+                } else if (response.status === 'removed') {
+                    icon.removeClass('glow'); // Remove the 'glow' class dynamically
+                }
+
+                $('.ec-header-count.wish-count').text(response.count);
+            },
+            error: function(xhr) {
+                console.error('Error:', xhr.responseText);
+            }
+        });
     });
-});
-
-
 </script>
 
 </body>

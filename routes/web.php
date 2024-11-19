@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HistoryController;
@@ -112,8 +113,12 @@ Route::post('user-review',[UserReviewController::class,'store']);
 Route::post('/wishlist/toggle', [WishlistController::class, 'wishlist_toggle'])->name('wishlist.toggle');
 
 
-// cart
+// guest add to cart isntantly routes for ajax call
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
-Route::get('/cart', [CartController::class, 'getCart'])->name('cart.get');
+Route::get('/get-cart', [CartController::class, 'getCart'])->name('cart.get');
 Route::post('/cart/updt', [CartController::class, 'updateCart'])->name('cart.updt');
 Route::post('/delete-from-cart', [CartController::class, 'deleteFromCart'])->name('cart.delt');
+
+// Blog routes
+Route::get('/blogs',[BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{slug}',[BlogController::class, 'getBlogBySlug'])->name('singleblog');
