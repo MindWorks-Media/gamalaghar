@@ -126,12 +126,11 @@
                                                 </span>
                                             </div>
                                             <div class="ec-pro-content">
-                                                <span class="ec-price px-4 mb-3 " style="gap: 20px">
-                                                    <a href=""
-                                                        style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">Add
+                                                <span class="ec-price px-3 mb-3 " style="gap: 15px; margin-left:5px">
+                                                    <a href="#" class="add-to-cart-btn w-100 text-center" data-product-id="{{$productData->id}}" data-sizeprice-id="{{ $productData->productsizeprice->first()->id }}" data-name="{{$productData->product_name}}" data-price="{{ $productData->productsizeprice->first()->price }}" data-image-url="{{ $firstMedia->getUrl() }}">Add
                                                         to Cart</a>
                                                     <a href="{{ url('product/' . $productData->slug) }}"
-                                                        style="border: 2px solid #b5b2b2; padding: 0px 5px;font-size: 12px;">Buy
+                                                        class="buy-now-btn w-100 text-center">Buy
                                                         Now</a>
                                                 </span>
                                             </div>

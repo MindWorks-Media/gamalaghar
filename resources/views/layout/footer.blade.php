@@ -290,15 +290,16 @@
             const productId = $(this).data('product-id');
             const name = $(this).data('name');
             const price = $(this).data('price');
+            const pricesizeId = $(this).data('sizeprice-id');
             const imageUrl = $(this).data(
                 'image-url'); // Assuming you add a data attribute for the image URL
 
             // Call the addToCart function with the product details
-            addToCart(productId, name, price, imageUrl);
+            addToCart(productId, name, price, pricesizeId, imageUrl);
         });
     });
 
-    function addToCart(productId, name, price, imageUrl) {
+    function addToCart(productId, name, price, pricesizeId , imageUrl) {
         $.ajax({
             url: '/add-to-cart',
             type: 'POST',
@@ -307,6 +308,7 @@
                 name: name,
                 price: price,
                 quantity: 1,
+                price_sizeId : pricesizeId,
                 image_url: imageUrl, // Send image URL if available
                 _token: $('meta[name="csrf-token"]').attr('content') // Include CSRF token for security
             },
@@ -315,7 +317,7 @@
                 updateCartDisplay(response.cart); // Update cart display instantly
                 $('.instant-count').show();
                 $('.ec-header-count.ec-cart-count.cart-count-lable.instant-count').text(response.cartCount);
-                $('#total-price').text(response.totalPrice.toFixed(2));
+                $('#total-price-guest').text(response.totalPrice.toFixed(2));
             },
             error: function() {
                 alert('Failed to add item to cart');
@@ -330,9 +332,9 @@
             success: function(response) {
                 updateCartDisplay(response.cart);
                 $('.instant-count').show();
-                $('.ec-header-count.ec-cart-count.cart-count-lable').text(Object.keys(response.cart)
+                $('.ec-header-count.ec-cart-count.cart-count-lable.instant-count').text(Object.keys(response.cart)
                     .length);
-                $('#total-price').text(
+                $('#total-price-guest').text(
                     Object.values(response.cart).reduce(
                         (total, item) => total + item.price * item.quantity,
                         0
@@ -346,7 +348,7 @@
     }
 
     function updateCartDisplay(cart) {
-        let cartContainer = $('.eccart-pro-items');
+        let cartContainer = $('.eccart-pro-items.item1');
         cartContainer.empty();
 
         let totalPrice = 0;
@@ -371,7 +373,7 @@
         });
 
         $('.instant-count').text(totalCount);
-        $('#total-price').text(totalPrice.toFixed(2));
+        $('#total-price-guest').text(totalPrice.toFixed(2));
     }
 
 
@@ -388,7 +390,7 @@
                 console.log(response.message); // Show success message
 
                 // Update the cart count display
-                $('.ec-header-count.ec-cart-count.cart-count-lable').text(response.cartCount);
+                $('.ec-header-count.ec-cart-count.cart-count-lable.instant-count').text(response.cartCount);
 
                 // Optionally remove the product from the cart list in the DOM
                 $(`.cart-item[data-product-id="${productId}"]`).remove();

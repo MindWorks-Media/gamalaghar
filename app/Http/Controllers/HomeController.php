@@ -36,6 +36,9 @@ class HomeController extends Controller
     //     // Add the average rating to the array
     //     $averageRatingValues[$products->id] = $userAverageRating->average_rating ?? 0;
     // }
+
+       $latest_products = Product::select('id','product_name','slug','discount')->with(['media', 'productsizeprice','productImages'])->take(4)->latest()->orderBy('id','DESC')->get();
+
         if (auth()->check()) {
             $countWishList = Wishlist::where('user_id', auth()->user()->id)->count();
             $countCarts = Cart::where('user_id', auth()->user()->id)->count();
@@ -69,7 +72,7 @@ class HomeController extends Controller
         //     'averageRatingValues',
         //     'feauturedProducts'
         // ));
-        return view('home.home', compact('mainCategory','countWishList','cart','cartproductImages','countCarts','faqs','feauturedProducts','subcats'
+        return view('home.home', compact('mainCategory','countWishList','cart','cartproductImages','countCarts','faqs','feauturedProducts','subcats','latest_products'
         ));
     }
 

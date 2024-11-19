@@ -59,8 +59,16 @@ class CheckoutController extends Controller
             $userDetails=[];
         }
         $selectedProducts = $request->session()->get('selectedProducts');
+        // dd($selectedProducts);
+        // $cartProducts = Cart::where('user_id', auth()->user()->id)->get();
+        // dd($selectedProducts);
         $productId = $selectedProducts->pluck('id')->toArray();
+        // $productId = $cartProducts->pluck('product_id')->toArray();
+        // $selectedProducts = Product::whereIn('id', $productId)->get();
+        // dd($selectedProducts);
+        // dd($productId);
         $cartproductImages = Product::with('media')->whereIn('id', $productId)->get();
+        // dd($cartproductImages);
         $sub_total = Cart::join('product_size_prices', 'product_size_prices.id', '=', 'carts.product_size_price_id')
         ->where('user_id', auth()->user()->id)
         ->whereIn('carts.product_id', $productId)

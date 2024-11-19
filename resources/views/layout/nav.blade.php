@@ -237,21 +237,27 @@
                             <!-- Header wishlist End -->
                             <!-- Header Cart Start -->
                             <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+                              @auth
                                 @if ($countCarts)
-                                    <div class="header-icon">
-                                        <i class="fi-rr-shopping-basket"></i>
-                                    </div>
-                                    <span class="ec-header-count ec-cart-count cart-count-lable">
-                                        {{ $countCarts }}
-                                    </span>
+                                        <div class="header-icon">
+                                            <i class="fi-rr-shopping-basket"></i>
+                                        </div>
+                                        <span class="ec-header-count ec-cart-count cart-count-lable">
+                                            {{ $countCarts }}
+                                        </span>
                                 @else
                                     <div class="header-icon">
                                         <i class="fi-rr-shopping-basket"></i>
                                     </div>
-                                    <span class="ec-header-count ec-cart-count cart-count-lable instant-count">
-                                       
-                                    </span>
+                                
                                 @endif
+                              @else
+                                <div class="header-icon">
+                                    <i class="fi-rr-shopping-basket"></i>
+                                </div>
+                                <span class="ec-header-count ec-cart-count cart-count-lable instant-count">
+                                </span>
+                              @endauth
                             </a>
                         </div>
                     </div>

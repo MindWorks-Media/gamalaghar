@@ -156,6 +156,7 @@ class CartController extends Controller
                 'quantity' => $quantity,
                 'name' => $request->input('name'),
                 'price' => $request->input('price'),
+                'price_sizeId' => $request->input('price_sizeId'),
                 'image_url' => $request->input('image_url')
             ];
         }

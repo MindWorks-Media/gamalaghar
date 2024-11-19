@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Session;
 class LoginController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('redirect_to')) {
+            session(['url.intended' => $request->input('redirect_to')]);
+        }
+
         $mainCategory = MainCategory::with('subcategories')->get();
         if (auth()->check()) {
             $countWishList = Wishlist::where('user_id', auth()->user()->id)->count();
@@ -37,15 +41,61 @@ class LoginController extends Controller
         return view('auth.login', compact('mainCategory', 'countWishList', 'cart', 'cartproductImages', 'countCarts'));
     }
 
+    // public function login(LoginRequest $request)
+    // {
+    //     $confidential = $request->only('email', 'password');
+    //     try {
+    //         if (Auth::attempt($confidential)) {
+    //             $user = Auth()->user();
+    //             if ($user->role == 'user') {
+    //                 Session::put('user_id', $user->id);
+    //                 return redirect('/')->with('success', 'Welcome ' . $user->name);
+    //             } else {
+    //                 return back()->with('error', 'Incorrect email or password!');
+    //             }
+    //         } else {
+    //             return back()->with('error', 'Incorrect email or password!');
+    //         }
+    //     } catch (\Exception $e) {
+    //         return back()->with('error', $e->getMessage());
+    //     }
+    // }
+
+
+
+    
     public function login(LoginRequest $request)
     {
+        $cartItems = Session::get('cart', []); // Retrieve session cart
+
+    
         $confidential = $request->only('email', 'password');
+    
         try {
             if (Auth::attempt($confidential)) {
                 $user = Auth()->user();
+    
                 if ($user->role == 'user') {
+                    // Save session cart items to the database
+                    if (!empty($cartItems)) {
+                        foreach ($cartItems as $item) {
+                            Cart::create([
+                                'user_id' => $user->id,
+                                'product_id' => $item['product_id'],
+                                'product_size_price_id' => $item['price_sizeId'], // Fix key name if needed
+                                'quantity' => $item['quantity'],
+                            ]);
+                        }
+    
+                        // Clear session cart after storing it in the database
+                        Session::forget('cart');
+                    }
                     Session::put('user_id', $user->id);
-                    return redirect('/')->with('success', 'Welcome ' . $user->name);
+    
+                    // Check for intended URL
+                    $redirectTo = session()->pull('url.intended', '/'); // Defaults to '/' if no intended URL is found
+                    
+                    return redirect($redirectTo)->with('success', 'Welcome ' . $user->name);
                 } else {
                     return back()->with('error', 'Incorrect email or password!');
                 }
@@ -56,6 +106,8 @@ class LoginController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+    
+
 
     public function logout()
     {

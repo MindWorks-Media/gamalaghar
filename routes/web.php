@@ -64,7 +64,7 @@ Route::post('wishlist', [WishlistController::class, 'store']);
 Route::get('wishlist/delete/{id}', [WishlistController::class, 'destroy']);
 
 
-Route::get('cart', [CartController::class, 'index']);
+Route::get('cart', [CartController::class, 'index'])->name('cart');
 Route::post('cart', [CartController::class, 'store']);
 Route::get('cart/delete/{id}', [CartController::class, 'destroy']);
 Route::get('cart/update/{id}', [CartController::class, 'updateCartQuantity']);

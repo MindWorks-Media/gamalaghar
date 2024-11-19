@@ -83,16 +83,15 @@
 
                                             </div>
                                             <div class="ec-pro-content">
-                                                <span class="ec-price px-3 mb-3 " style="gap: 20px; margin-left:5px">
-                                                    <a href="#" class="add-to-cart-btn" data-product-id="{{$productData->id}}" data-name="{{$productData->product_name}}" data-price="{{ $productData->productsizeprice->first()->price }}" data-image-url="{{ $firstMedia->getUrl() }}">Add
+                                                <span class="ec-price px-3 mb-3 " style="gap: 15px; margin-left:5px">
+                                                    <a href="#" class="add-to-cart-btn w-100 text-center" data-product-id="{{$productData->id}}" data-sizeprice-id="{{ $productData->productsizeprice->first()->id }}" data-name="{{$productData->product_name}}" data-price="{{ $productData->productsizeprice->first()->price }}" data-image-url="{{ $firstMedia->getUrl() }}">Add
                                                         to Cart</a>
                                                     <a href="{{ url('product/' . $productData->slug) }}"
-                                                        class="buy-now-btn">Buy
+                                                        class="buy-now-btn w-100 text-center">Buy
                                                         Now</a>
                                                 </span>
                                             </div>
                                         </a>
-                                       
                                         @auth
                                         @php
                                         $isInWishlist = \App\Models\Wishlist::where('user_id', auth()->id())

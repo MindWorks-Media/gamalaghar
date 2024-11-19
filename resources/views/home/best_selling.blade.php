@@ -66,7 +66,7 @@
                                             </div>
                                             <div class="ec-pro-content">
                                                 <span class="ec-price px-3 mb-3 " style="gap: 15px; margin-left:5px">
-                                                    <a href="#" class="add-to-cart-btn w-100 text-center" data-product-id="{{$productData->id}}" data-name="{{$productData->product_name}}" data-price="{{ $productData->productsizeprice->first()->price }}" data-image-url="{{ $firstMedia->getUrl() }}">Add
+                                                    <a href="#" class="add-to-cart-btn w-100 text-center" data-product-id="{{$productData->id}}" data-sizeprice-id="{{ $productData->productsizeprice->first()->id }}" data-name="{{$productData->product_name}}" data-price="{{ $productData->productsizeprice->first()->price }}" data-image-url="{{ $firstMedia->getUrl() }}">Add
                                                         to Cart</a>
                                                     <a href="{{ url('product/' . $productData->slug) }}"
                                                         class="buy-now-btn w-100 text-center">Buy
@@ -102,6 +102,106 @@
     </div>
 </section>
 <!-- Grocery section End -->
+
+{{-- new latest arrival products section --}}
+<section class="section ec-grocery-sec section-space-ptb-80 section-space-m" id="best-selling-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-title">
+                    <h2 class="ec-title">NEW ARRIVAL PRODUCTS</h2>
+                    <p class="sub-title">Browse Our Latest Added Products</p>
+                </div>
+            </div>
+        </div>
+        <div class="row best-selling-side">
+            <!-- Compare Content Start -->
+            <div class="ec-wish-rightside col-lg-12 col-md-12">
+                <!-- Compare content Start -->
+                <div class="ec-compare-content">
+                    <div class="ec-compare-inner">
+                        <div class="row margin-minus-b-30 product-grid">
+                            @foreach ($latest_products as $item)
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-6 pro-gl-content">
+                                    <div class="ec-product-inner">
+                                        <a href="{{ url('product/' . $item->slug) }}">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <div class="image">
+                                                        @if ($item->productImages->isNotEmpty())
+                                                            @php
+                                                                $firstImage = $item->productImages->first();
+                                                                $firstMedia = $firstImage
+                                                                    ->getMedia('product_image')
+                                                                    ->first();
+                                                            @endphp
+
+                                                            @if ($firstMedia)
+                                                                <img src="{{ $firstMedia->getUrl() }}"
+                                                                    class="main-image">
+                                                            @endif
+                                                        @else
+                                                            <img class="main-image"
+                                                                src="{{ $item->getFirstMediaUrl('product_image') }}"
+                                                                alt="Product" />
+                                                        @endif
+                                                    </div>
+                                                    @if ($item->discount)
+                                                        <span class="percentage">{{ $item->discount }}%</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a
+                                                        href="{{ url('product/' . $item->slug) }}">{{ $item->product_name }}</a>
+                                                </h5>
+                                                <div class="ec-pro-rating px-3" style="margin-left: 5px">
+                                                    <div class="average_user_rating"
+                                                        lay-options="{value: {{ $averageRatingValues[$item->id] ?? 0 }}, theme: '#FF8000'}">
+                                                    </div>
+
+                                                </div>
+                                                <span class="ec-price px-3 mb-1" style="margin-left: 5px">
+                                                    @if ($item->productsizeprice->isNotEmpty())
+                                                        <span class="new-price">Rs.
+                                                            {{ $item->productsizeprice->first()->price }}</span>
+                                                    @endif
+                                                </span>
+
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <span class="ec-price px-3 mb-3 " style="gap: 15px; margin-left:5px">
+                                                    <a href="#" class="add-to-cart-btn w-100 text-center" data-product-id="{{$item->id}}" data-name="{{$item->product_name}}" data-price="{{ $item->productsizeprice->first()->price }}" data-sizeprice-id="{{ $item->productsizeprice->first()->id }}" data-image-url="{{ $firstMedia->getUrl() }}">Add
+                                                        to Cart</a>
+                                                    <a href="{{ url('product/' . $item->slug) }}"
+                                                        class="buy-now-btn w-100 text-center">Buy
+                                                        Now</a>
+                                                </span>
+                                            </div>
+                                        </a>
+                                       
+                                        @auth
+                                        @php
+                                        $isInWishlist = \App\Models\Wishlist::where('user_id', auth()->id())
+                                            ->where('product_id', $item->id)
+                                            ->exists();
+                                         @endphp
+                                            <span class="wish-icon {{ $isInWishlist ? 'glow' : '' }}" data-product-id="{{ $item->id }}"><i class="fi-rr-heart"
+                                                    style="font-size: 25px"></i></span>
+                                        @endauth
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                     
+                    </div>
+                </div>
+                <!--compare content End -->
+            </div>
+            <!-- Compare Content end -->
+        </div>
+    </div>
+</section>
 
 {{-- best categories --}}
 <!-- Best Selling section start -->
