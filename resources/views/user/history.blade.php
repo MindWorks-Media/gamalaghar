@@ -27,7 +27,7 @@
                     <div class="ec-vendor-card-header">
                         <h5>Order History</h5>
                         <div class="ec-header-btn">
-                            <a class="btn btn-lg btn-primary" href="#">Shop Now</a>
+                            <a class="btn btn-lg btn-primary" href="{{ route('products') }}">Shop Now</a>
                         </div>
                     </div>
                     <div class="ec-vendor-card-body">

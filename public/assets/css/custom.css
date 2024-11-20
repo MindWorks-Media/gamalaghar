@@ -85,7 +85,7 @@ a {
     /* padding: 0px 50px; */
 }
 .ec-footer {
-    padding: 0px 50px;
+    padding: 40px 50px;
 }
 
 .ec-pro-variation
@@ -161,7 +161,6 @@ a {
     color: white;
 }
 
-
 .custom-carousel img {
     height: 80vh;
     object-fit: cover;
@@ -177,7 +176,7 @@ a {
     transition: none !important;
 }
 
-.m-hit{
+.m-hit {
     height: 80vh;
 }
 
@@ -194,7 +193,6 @@ a {
 @media (max-width: 768px) {
     .custom-carousel {
         max-height: 50vh;
-
     }
 
     .m-hit {
@@ -203,7 +201,6 @@ a {
 
     .custom-carousel img {
         height: 50vh;
-
     }
 
     .product-grid {
@@ -217,12 +214,10 @@ a {
         gap: 10px;
     }
 
-    
     .ec-product-inner .ec-pro-content .ec-pro-title {
         text-align: center;
     }
 }
-
 
 @media (max-width: 430px) {
     .custom-carousel {
@@ -256,7 +251,3 @@ a {
 .header-top-message {
     color: white;
 }
-
-
-
-

@@ -80,6 +80,62 @@ class UserController extends Controller
         }
     }
 
+
+//     public function store(CreateUserRequest $request)
+// {
+//     if ($request->password !== $request->confirm_password) {
+//         return back()->with('error', 'Password does not match with Confirm Password!');
+//     }
+
+//     try {
+//         $user = DB::transaction(function () use ($request) {
+//             $user = User::create([
+//                 'name' => $request->fullname,
+//                 'email' => $request->email,
+//                 'phone' => $request->phone,
+//                 'password' => Hash::make($request->password),
+//                 'email_verified_at' => Carbon::today(),
+//                 'role' => 'user',
+//             ]);
+
+//             $token = Str::random(60);
+//             DB::table('password_resets')->insert([
+//                 'email' => $request->email,
+//                 'token' => $token,
+//                 'created_at' => now(),
+//             ]);
+
+//             Mail::to($request->email)->send(new UserVerificationMail($user, $token));
+
+//             // Check if session cart has data
+//             $cartItems = Session::get('cart', []);
+//             if (!empty($cartItems)) {
+//                 foreach ($cartItems as $item) {
+//                     Cart::create([
+//                         'user_id' => $user->id,
+//                         'product_id' => $item['product_id'],
+//                         'product_size_price_id' => $item['price_sizeId'], // Adjust key if needed
+//                         'quantity' => $item['quantity'],
+//                     ]);
+//                 }
+
+//                 // Clear session cart after storing it in the database
+//                 Session::forget('cart');
+//             }
+
+//             return $user;
+//         });
+
+//         if ($user) {
+//             return redirect()->route('login')->with('success', 'You are registered successfully!');
+//         }
+//     } catch (\Exception $e) {
+//         return back()->with('error', $e->getMessage());
+//     }
+// }
+
+
+
     public function verifyMail(Request $request)
     {
         $token = request()->token;
