@@ -1,15 +1,15 @@
 @section('metadata')
     <x-meta title="Gamala Ghar"
-    description="Gamala Ghar is an innovative ecommerce platform dedicated to providing a wide range of
+        description="Gamala Ghar is an innovative ecommerce platform dedicated to providing a wide range of
                             indoor plants to enhance the ambiance and freshness of homes. With a focus on promoting
                             well-being and creating healthier living spaces, Gamala Ghar offers a curated selection
                             of indoor plants that are not only visually appealing but also contribute to improving
                             indoor air quality and overall mood."
-    image="{{ url('assets/img/gamala-ghar-logo.png') }}" />
+        image="{{ url('assets/img/gamala-ghar-logo.png') }}" />
     <meta name="title" property="og:title" content="Gamalaghar">
     <meta name="description" property="og:description" content="Gamalaghar">
     <meta name="keywords" content="Gamalaghar">
-    <meta name="author" content="Gamalaghar Ecommerce">   
+    <meta name="author" content="Gamalaghar Ecommerce">
 @endsection
 
 @include('layout.header')
@@ -65,8 +65,14 @@
                                                 </div>
                                             </div>
                                             <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a
-                                                        href="{{ url('product/' . $productData->slug) }}">{{ $productData->product_name }}</a>
+                                                <h5 class="ec-pro-title">
+                                                    <a href="{{ url('product/' . $productData->slug) }}"
+                                                        class="product-title"
+                                                        data-full-title="{{ $productData->product_name }}">
+                                                        <span class="full-title">{{ $productData->product_name }}</span>
+                                                        <span
+                                                            class="mobile-title">{{ Str::words($productData->product_name, 2, '...') }}</span>
+                                                    </a>
                                                 </h5>
                                                 <div class="ec-pro-rating px-3" style="margin-left: 5px">
                                                     <div class="average_user_rating"
@@ -84,7 +90,12 @@
                                             </div>
                                             <div class="ec-pro-content">
                                                 <span class="ec-price px-3 mb-3 " style="gap: 15px; margin-left:5px">
-                                                    <a href="#" class="add-to-cart-btn w-100 text-center" data-product-id="{{$productData->id}}" data-sizeprice-id="{{ $productData->productsizeprice->first()->id }}" data-name="{{$productData->product_name}}" data-price="{{ $productData->productsizeprice->first()->price }}" data-image-url="{{ $firstMedia->getUrl() }}">Add
+                                                    <a href="#" class="add-to-cart-btn w-100 text-center"
+                                                        data-product-id="{{ $productData->id }}"
+                                                        data-sizeprice-id="{{ $productData->productsizeprice->first()->id }}"
+                                                        data-name="{{ $productData->product_name }}"
+                                                        data-price="{{ $productData->productsizeprice->first()->price }}"
+                                                        data-image-url="{{ $firstMedia->getUrl() }}">Add
                                                         to Cart</a>
                                                     <a href="{{ url('product/' . $productData->slug) }}"
                                                         class="buy-now-btn w-100 text-center">Buy
@@ -93,12 +104,13 @@
                                             </div>
                                         </a>
                                         @auth
-                                        @php
-                                        $isInWishlist = \App\Models\Wishlist::where('user_id', auth()->id())
-                                            ->where('product_id', $productData->id)
-                                            ->exists();
-                                         @endphp
-                                            <span class="wish-icon {{ $isInWishlist ? 'glow' : '' }}" data-product-id="{{ $productData->id }}"><i class="fi-rr-heart"
+                                            @php
+                                                $isInWishlist = \App\Models\Wishlist::where('user_id', auth()->id())
+                                                    ->where('product_id', $productData->id)
+                                                    ->exists();
+                                            @endphp
+                                            <span class="wish-icon {{ $isInWishlist ? 'glow' : '' }}"
+                                                data-product-id="{{ $productData->id }}"><i class="fi-rr-heart"
                                                     style="font-size: 25px"></i></span>
                                         @endauth
                                     </div>

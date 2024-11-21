@@ -299,7 +299,7 @@
         });
     });
 
-    function addToCart(productId, name, price, pricesizeId , imageUrl) {
+    function addToCart(productId, name, price, pricesizeId, imageUrl) {
         $.ajax({
             url: '/add-to-cart',
             type: 'POST',
@@ -308,7 +308,7 @@
                 name: name,
                 price: price,
                 quantity: 1,
-                price_sizeId : pricesizeId,
+                price_sizeId: pricesizeId,
                 image_url: imageUrl, // Send image URL if available
                 _token: $('meta[name="csrf-token"]').attr('content') // Include CSRF token for security
             },
@@ -332,7 +332,8 @@
             success: function(response) {
                 updateCartDisplay(response.cart);
                 $('.instant-count').show();
-                $('.ec-header-count.ec-cart-count.cart-count-lable.instant-count').text(Object.keys(response.cart)
+                $('.ec-header-count.ec-cart-count.cart-count-lable.instant-count').text(Object.keys(response
+                        .cart)
                     .length);
                 $('#total-price-guest').text(
                     Object.values(response.cart).reduce(
@@ -430,6 +431,33 @@
             error: function(xhr) {
                 console.error('Error:', xhr.responseText);
             }
+        });
+    });
+
+
+    // to adjust the product title
+    document.addEventListener('DOMContentLoaded', function() {
+        const productTitles = document.querySelectorAll('.product-title');
+        productTitles.forEach(title => {
+            const fullTitle = title.getAttribute('data-full-title');
+            const truncatedTitle = fullTitle.split(' ').slice(0, 2).join(' ') + ' ...';
+
+            if (window.innerWidth <= 768) {
+                title.querySelector('.full-title').style.display = 'none';
+                title.querySelector('.mobile-title').textContent = truncatedTitle;
+                title.querySelector('.mobile-title').style.display = 'inline';
+            }
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 768) {
+                    title.querySelector('.full-title').style.display = 'none';
+                    title.querySelector('.mobile-title').textContent = truncatedTitle;
+                    title.querySelector('.mobile-title').style.display = 'inline';
+                } else {
+                    title.querySelector('.mobile-title').style.display = 'none';
+                    title.querySelector('.full-title').style.display = 'inline';
+                }
+            });
         });
     });
 </script>

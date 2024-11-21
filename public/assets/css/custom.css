@@ -251,3 +251,21 @@ a {
 .header-top-message {
     color: white;
 }
+
+/* Desktop: Show full title */
+.product-title .full-title {
+    display: inline;
+}
+.product-title .mobile-title {
+    display: none;
+}
+
+/* Mobile: Show truncated title */
+@media (max-width: 768px) {
+    .product-title .full-title {
+        display: none;
+    }
+    .product-title .mobile-title {
+        display: inline;
+    }
+}
