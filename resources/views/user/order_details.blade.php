@@ -57,9 +57,18 @@
                                                                 <tr>
 
                                                                 </tr>
-                                                                @forelse ($order->orderItems as $orderItems)
+                                                                @forelse ($order->orderItems as $index => $orderItems)
+                                                                    @php
+                                                                        $pro_row = \App\Models\Product::where(
+                                                                            'id',
+                                                                            $orderItems->product_id,
+                                                                        )
+                                                                            ->select('product_code')
+                                                                            ->first();
+
+                                                                    @endphp
                                                                     <tr class="border-bottom">
-                                                                        <td>{{ $orderItems->id }}</td>
+                                                                        <td>{{ ++$index }}</td>
                                                                         <td>
                                                                             @foreach ($productImages as $productImage)
                                                                                 @if ($productImage->id == $orderItems->product_id)
@@ -94,7 +103,7 @@
                                                                             @endforeach
                                                                         </td>
 
-                                                                        <td>{{ $orderItems->product ? $orderItems->product->product_code : '-' }}
+                                                                        <td>{{ $pro_row ? $pro_row->product_code : '-' }}
                                                                         </td>
                                                                         <td>{{ $orderItems->product_name }}</td>
                                                                         <td>{{ $orderItems->quantity }}</td>

@@ -62,18 +62,29 @@
                                     @endif
                                 </span>
                                 <div class="ec-pro-content">
-                                    <span class="ec-price px-3 mb-3 " style="gap: 15px; margin-left:5px">
-                                        <a href="#" class="add-to-cart-btn w-100 text-center"
-                                            data-product-id="{{ $relatedProduct->id }}"
-                                            data-sizeprice-id="{{ $relatedProduct->productsizeprice->first()->id }}"
-                                            data-name="{{ $relatedProduct->product_name }}"
-                                            data-price="{{ $relatedProduct->productsizeprice->first()->price }}"
-                                            data-image-url="{{ $firstMedia->getUrl() }}">Add
-                                            to Cart</a>
-                                        <a href="{{ url('product/' . $relatedProduct->slug) }}"
-                                            class="buy-now-btn w-100 text-center">Buy
-                                            Now</a>
-                                    </span>
+                                    @auth
+                                        <span class="ec-price px-3 mb-3 " style="gap: 15px; margin-left:5px">
+                                            <a href="#" class="add-to-cart-btn2 w-100 text-center"
+                                                data-product-id="{{ $relatedProduct->id }}">Add
+                                                to Cart</a>
+                                            <a href="{{ url('product/' . $relatedProduct->slug) }}"
+                                                class="buy-now-btn w-100 text-center">Buy
+                                                Now</a>
+                                        </span>
+                                    @else
+                                        <span class="ec-price px-3 mb-3 " style="gap: 10px; margin-left:5px">
+                                            <a href="#" class="add-to-cart-btn w-100 text-center"
+                                                data-product-id="{{ $relatedProduct->id }}"
+                                                data-sizeprice-id="{{ $relatedProduct->productsizeprice->first()->id }}"
+                                                data-name="{{ $relatedProduct->product_name }}"
+                                                data-price="{{ $relatedProduct->productsizeprice->first()->price }}"
+                                                data-image-url="{{ $firstMedia->getUrl() }}">Add
+                                                to Cart</a>
+                                            <a href="{{ url('product/' . $relatedProduct->slug) }}"
+                                                class="buy-now-btn w-100 text-center">Buy
+                                                Now</a>
+                                        </span>
+                                    @endauth
                                 </div>
                             </div>
                         </a>
@@ -81,11 +92,11 @@
                         @auth
                             @php
                                 $isInWishlist = \App\Models\Wishlist::where('user_id', auth()->id())
-                                    ->where('product_id', $productData->id)
+                                    ->where('product_id', $relatedProduct->id)
                                     ->exists();
                             @endphp
                             <span class="wish-icon {{ $isInWishlist ? 'glow' : '' }}"
-                                data-product-id="{{ $productData->id }}"><i class="fi-rr-heart"
+                                data-product-id="{{ $relatedProduct->id }}"><i class="fi-rr-heart"
                                     style="font-size: 25px"></i></span>
                         @endauth
                     </div>

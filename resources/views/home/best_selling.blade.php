@@ -71,18 +71,31 @@
 
                                             </div>
                                             <div class="ec-pro-content">
-                                                <span class="ec-price px-3 mb-3 " style="gap: 10px; margin-left:5px">
-                                                    <a href="#" class="add-to-cart-btn w-100 text-center"
-                                                        data-product-id="{{ $productData->id }}"
-                                                        data-sizeprice-id="{{ $productData->productsizeprice->first()->id }}"
-                                                        data-name="{{ $productData->product_name }}"
-                                                        data-price="{{ $productData->productsizeprice->first()->price }}"
-                                                        data-image-url="{{ $firstMedia->getUrl() }}">Add
-                                                        to Cart</a>
-                                                    <a href="{{ url('product/' . $productData->slug) }}"
-                                                        class="buy-now-btn w-100 text-center">Buy
-                                                        Now</a>
-                                                </span>
+                                                @auth
+
+                                                    <span class="ec-price px-3 mb-3 " style="gap: 10px; margin-left:5px">
+                                                        <a href="#" class="add-to-cart-btn2 w-100 text-center"
+                                                            data-product-id="{{ $productData->id }}">Add
+                                                            to Cart</a>
+                                                        <a href="{{ url('product/' . $productData->slug) }}"
+                                                            class="buy-now-btn w-100 text-center">Buy
+                                                            Now</a>
+                                                    </span>
+                                                @else
+                                                    <span class="ec-price px-3 mb-3 " style="gap: 10px; margin-left:5px">
+                                                        <a href="#" class="add-to-cart-btn w-100 text-center"
+                                                            data-product-id="{{ $productData->id }}"
+                                                            data-sizeprice-id="{{ $productData->productsizeprice->first()->id }}"
+                                                            data-name="{{ $productData->product_name }}"
+                                                            data-price="{{ $productData->productsizeprice->first()->price }}"
+                                                            data-image-url="{{ $firstMedia->getUrl() }}">Add
+                                                            to Cart</a>
+                                                        <a href="{{ url('product/' . $productData->slug) }}"
+                                                            class="buy-now-btn w-100 text-center">Buy
+                                                            Now</a>
+                                                    </span>
+
+                                                @endauth
                                             </div>
                                         </a>
 
@@ -188,18 +201,29 @@
 
                                             </div>
                                             <div class="ec-pro-content">
-                                                <span class="ec-price px-3 mb-3 " style="gap: 10px; margin-left:5px">
-                                                    <a href="#" class="add-to-cart-btn w-100 text-center"
-                                                        data-product-id="{{ $item->id }}"
-                                                        data-name="{{ $item->product_name }}"
-                                                        data-price="{{ $item->productsizeprice->first()->price }}"
-                                                        data-sizeprice-id="{{ $item->productsizeprice->first()->id }}"
-                                                        data-image-url="{{ $firstMedia->getUrl() }}">Add
-                                                        to Cart</a>
-                                                    <a href="{{ url('product/' . $item->slug) }}"
-                                                        class="buy-now-btn w-100 text-center">Buy
-                                                        Now</a>
-                                                </span>
+                                                @auth
+                                                    <span class="ec-price px-3 mb-3 " style="gap: 10px; margin-left:5px">
+                                                        <a href="#" class="add-to-cart-btn2 w-100 text-center"
+                                                            data-product-id="{{ $item->id }}">Add
+                                                            to Cart</a>
+                                                        <a href="{{ url('product/' . $item->slug) }}"
+                                                            class="buy-now-btn w-100 text-center">Buy
+                                                            Now</a>
+                                                    </span>
+                                                @else
+                                                    <span class="ec-price px-3 mb-3 " style="gap: 10px; margin-left:5px">
+                                                        <a href="#" class="add-to-cart-btn w-100 text-center"
+                                                            data-product-id="{{ $item->id }}"
+                                                            data-name="{{ $item->product_name }}"
+                                                            data-price="{{ $item->productsizeprice->first()->price }}"
+                                                            data-sizeprice-id="{{ $item->productsizeprice->first()->id }}"
+                                                            data-image-url="{{ $firstMedia->getUrl() }}">Add
+                                                            to Cart</a>
+                                                        <a href="{{ url('product/' . $item->slug) }}"
+                                                            class="buy-now-btn w-100 text-center">Buy
+                                                            Now</a>
+                                                    </span>
+                                                @endauth
                                             </div>
                                         </a>
 
